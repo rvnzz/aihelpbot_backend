@@ -1,0 +1,1313 @@
+2025-01-13 21:29:58,091 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:30:01,095 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:30:01,098 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:30:01,099 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\41: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/41/docstore.json'
+2025-01-13 21:30:01,099 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\42: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/42/docstore.json'
+2025-01-13 21:30:01,106 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\43: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/43/docstore.json'
+2025-01-13 21:30:01,108 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:30:03,183 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:30:03,186 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:30:03,187 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\41: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/41/docstore.json'
+2025-01-13 21:30:03,188 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\42: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/42/docstore.json'
+2025-01-13 21:30:03,189 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\43: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/43/docstore.json'
+2025-01-13 21:30:03,528 - app.core.rag - INFO - Создание индекса в директории: E:\dev\aihelperbackend\storage\indices\44
+2025-01-13 21:30:03,528 - app.core.rag - ERROR - Ошибка при создании индекса: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/44/docstore.json'
+2025-01-13 21:31:18,232 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:31:22,364 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:31:22,368 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:31:22,369 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\41: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/41/docstore.json'
+2025-01-13 21:31:22,370 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\42: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/42/docstore.json'
+2025-01-13 21:31:22,371 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\43: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/43/docstore.json'
+2025-01-13 21:31:22,372 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\44: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/44/docstore.json'
+2025-01-13 21:31:22,374 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:31:24,525 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:31:24,528 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:31:24,529 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\41: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/41/docstore.json'
+2025-01-13 21:31:24,530 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\42: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/42/docstore.json'
+2025-01-13 21:31:24,531 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\43: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/43/docstore.json'
+2025-01-13 21:31:24,532 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\44: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/44/docstore.json'
+2025-01-13 21:31:24,903 - app.core.rag - INFO - Создание индекса в директории: E:\dev\aihelperbackend\storage\indices\45
+2025-01-13 21:31:24,904 - app.core.rag - ERROR - Ошибка при создании индекса: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/45/docstore.json'
+2025-01-13 21:39:00,912 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:39:03,326 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:39:03,329 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:39:03,330 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\41: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/41/docstore.json'
+2025-01-13 21:39:03,330 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\42: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/42/docstore.json'
+2025-01-13 21:39:03,331 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\43: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/43/docstore.json'
+2025-01-13 21:39:03,331 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\44: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/44/docstore.json'
+2025-01-13 21:39:03,332 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\45: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/45/docstore.json'
+2025-01-13 21:39:03,334 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:39:05,218 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:39:05,220 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:39:05,221 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\41: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/41/docstore.json'
+2025-01-13 21:39:05,222 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\42: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/42/docstore.json'
+2025-01-13 21:39:05,222 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\43: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/43/docstore.json'
+2025-01-13 21:39:05,223 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\44: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/44/docstore.json'
+2025-01-13 21:39:05,224 - app.core.rag - ERROR - Ошибка загрузки индекса E:\dev\aihelperbackend\storage\indices\45: [Errno 2] No such file or directory: 'E:/dev/aihelperbackend/storage/indices/45/docstore.json'
+2025-01-13 21:39:39,360 - app.core.rag - ERROR - Ошибка при добавлении документа в индекс: 'RAGManager' object has no attribute 'chroma_client'
+2025-01-13 21:40:58,211 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:41:00,974 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:41:01,056 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:41:02,001 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:41:02,002 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:41:02,004 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:41:03,873 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:41:03,878 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:41:03,879 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:41:19,454 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:41:21,858 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:41:21,882 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:41:22,064 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:41:22,064 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:41:22,067 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:41:24,254 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:41:24,260 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:41:24,261 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:41:39,245 - app.core.rag - INFO - Документ успешно добавлен в индекс 47
+2025-01-13 21:46:15,985 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:46:18,411 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:46:18,436 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:46:18,640 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:46:18,641 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:46:18,645 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:46:20,601 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:46:20,607 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:46:20,608 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:46:34,557 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:46:37,388 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:46:37,412 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:46:37,603 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:46:37,603 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:46:37,605 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:46:39,723 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:46:39,730 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:46:39,730 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:46:59,535 - app.core.rag - INFO - Документ успешно добавлен в индекс 48
+2025-01-13 21:47:07,488 - app.core.rag - INFO - Коллекция doc_48 успешно удалена из ChromaDB
+2025-01-13 21:47:07,489 - app.core.rag - INFO - Индекс для документа 48 успешно удален
+2025-01-13 21:53:19,219 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:53:21,554 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:53:21,577 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:53:21,757 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:53:21,758 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:53:21,760 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:53:23,648 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:53:23,653 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:53:23,654 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:53:37,423 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:53:39,769 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:53:39,794 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:53:39,979 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:53:39,980 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:53:39,983 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:53:41,847 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:53:41,853 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:53:41,853 - app.core.rag - INFO - Путь хранения индексов: E:\dev\aihelperbackend\storage\indices
+2025-01-13 21:54:05,124 - app.core.rag - INFO - Документ успешно добавлен в индекс 49
+2025-01-13 21:54:16,526 - app.core.rag - INFO - Коллекция doc_49 успешно удалена из ChromaDB
+2025-01-13 21:54:16,527 - app.core.rag - INFO - Индекс для документа 49 успешно удален
+2025-01-13 21:58:55,219 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:58:57,815 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:58:57,838 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:58:58,030 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:58:58,032 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:59:00,003 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:59:00,008 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:59:13,881 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:59:16,450 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:59:16,472 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 21:59:16,654 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:59:16,657 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 21:59:18,544 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 21:59:18,550 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 21:59:44,132 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-13 21:59:47,877 - httpx - INFO - HTTP Request: GET https://chroma-onnx-models.s3.amazonaws.com/all-MiniLM-L6-v2/onnx.tar.gz "HTTP/1.1 200 OK"
+2025-01-13 21:59:59,012 - app.core.rag - INFO - Документ успешно добавлен в коллекцию doc_50
+2025-01-13 22:00:38,816 - app.core.rag - INFO - Коллекция doc_50 успешно удалена
+2025-01-13 22:02:16,395 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:02:18,854 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:02:18,880 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:02:19,075 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:02:19,077 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:02:20,952 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:02:20,957 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:02:34,953 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:02:37,448 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:02:37,472 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:02:37,650 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:02:37,652 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:02:39,586 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:02:39,592 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:02:51,476 - app.core.rag - INFO - Документ успешно добавлен в коллекцию doc_51
+2025-01-13 22:02:56,443 - app.core.rag - INFO - Коллекция doc_51 успешно удалена
+2025-01-13 22:02:56,444 - app.core.rag - INFO - Коллекции: ['doc_47']
+2025-01-13 22:07:37,182 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:07:39,791 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:07:39,816 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:07:40,008 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:07:40,009 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:07:41,998 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:07:42,003 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:12:43,964 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:12:46,533 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:12:46,564 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:12:46,814 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:12:46,817 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:12:48,696 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:12:48,705 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:18:53,987 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-13 22:20:34,013 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:20:36,511 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:20:36,536 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:20:36,744 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:20:36,746 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:20:38,744 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:20:38,751 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:20:55,196 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:20:57,606 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:20:57,634 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:20:57,846 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:20:57,848 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:20:59,745 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:20:59,751 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:21:51,401 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:22:13,917 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:22:13,945 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:22:14,171 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:22:14,174 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:22:16,203 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:22:16,210 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:22:32,044 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:22:34,898 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:22:34,922 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:22:35,142 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:22:35,145 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:22:37,149 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:22:37,155 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:24:37,395 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:24:40,076 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:24:40,099 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:24:40,318 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:24:40,320 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:24:42,240 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:24:42,247 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:24:58,037 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:25:01,181 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:25:01,206 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:25:01,423 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:25:01,425 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:25:03,470 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:25:03,476 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:29:35,899 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:29:38,428 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:29:38,454 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:29:38,665 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:29:38,668 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:29:40,470 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:29:40,477 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:29:56,515 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:29:58,811 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:29:58,838 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:29:59,058 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:29:59,061 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:30:00,932 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:30:00,941 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:31:58,092 - app.core.rag - ERROR - Ошибка при поиске по всем документам: In Chroma v0.6.0, list_collections only returns collection names. Use Client.get_collection(doc_47) to access query. See https://docs.trychroma.com/deployment/migration for more information.
+2025-01-13 22:33:49,032 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:33:51,364 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:33:51,398 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:33:51,665 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:33:51,669 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:33:53,414 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:33:53,422 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:34:09,564 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:34:12,053 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:34:12,078 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:34:12,292 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:34:12,295 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:34:14,182 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:34:14,190 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:34:22,384 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:34:24,913 - openai._base_client - INFO - Retrying request to /chat/completions in 0.436428 seconds
+2025-01-13 22:34:27,398 - openai._base_client - INFO - Retrying request to /chat/completions in 0.973402 seconds
+2025-01-13 22:34:30,422 - openai._base_client - INFO - Retrying request to /chat/completions in 1.975468 seconds
+2025-01-13 22:34:34,440 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.0 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:34:37,492 - openai._base_client - INFO - Retrying request to /chat/completions in 0.377956 seconds
+2025-01-13 22:34:39,928 - openai._base_client - INFO - Retrying request to /chat/completions in 0.933844 seconds
+2025-01-13 22:34:42,902 - openai._base_client - INFO - Retrying request to /chat/completions in 1.971111 seconds
+2025-01-13 22:34:46,915 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.1321165971880316 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:34:50,106 - openai._base_client - INFO - Retrying request to /chat/completions in 0.382400 seconds
+2025-01-13 22:34:52,528 - openai._base_client - INFO - Retrying request to /chat/completions in 0.784944 seconds
+2025-01-13 22:34:55,358 - openai._base_client - INFO - Retrying request to /chat/completions in 1.767501 seconds
+2025-01-13 22:34:59,177 - app.core.rag - ERROR - Ошибка при поиске по всем документам: Connection error.
+2025-01-13 22:40:07,092 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:40:09,967 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:40:09,994 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:40:10,215 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:40:10,218 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:40:12,240 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:40:12,246 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:40:26,672 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:40:26,693 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 22:40:26,694 - app.core.rag - INFO - LLM_URL: http://localhost:8085/v1
+2025-01-13 22:40:29,232 - openai._base_client - INFO - Retrying request to /chat/completions in 0.390546 seconds
+2025-01-13 22:40:31,653 - openai._base_client - INFO - Retrying request to /chat/completions in 0.886635 seconds
+2025-01-13 22:40:34,580 - openai._base_client - INFO - Retrying request to /chat/completions in 1.849815 seconds
+2025-01-13 22:40:38,472 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.0 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:40:41,519 - openai._base_client - INFO - Retrying request to /chat/completions in 0.458160 seconds
+2025-01-13 22:40:44,041 - openai._base_client - INFO - Retrying request to /chat/completions in 0.971615 seconds
+2025-01-13 22:40:47,048 - openai._base_client - INFO - Retrying request to /chat/completions in 1.772340 seconds
+2025-01-13 22:40:50,862 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.7499158355165934 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:40:54,664 - openai._base_client - INFO - Retrying request to /chat/completions in 0.416941 seconds
+2025-01-13 22:40:57,112 - openai._base_client - INFO - Retrying request to /chat/completions in 0.822887 seconds
+2025-01-13 22:40:59,964 - openai._base_client - INFO - Retrying request to /chat/completions in 1.906550 seconds
+2025-01-13 22:41:03,905 - app.core.rag - ERROR - Ошибка при поиске по всем документам: Connection error.
+2025-01-13 22:42:23,808 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:42:26,302 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:42:26,330 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:42:26,571 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:42:26,574 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:42:28,476 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:42:28,485 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:42:35,199 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:42:35,223 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 22:42:35,223 - app.core.rag - INFO - LLM_URL: http://localhost:8085/v1
+2025-01-13 22:42:37,780 - openai._base_client - INFO - Retrying request to /chat/completions in 0.406534 seconds
+2025-01-13 22:42:40,237 - openai._base_client - INFO - Retrying request to /chat/completions in 0.759920 seconds
+2025-01-13 22:42:43,031 - openai._base_client - INFO - Retrying request to /chat/completions in 1.593448 seconds
+2025-01-13 22:42:46,664 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.0 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:42:49,697 - openai._base_client - INFO - Retrying request to /chat/completions in 0.383115 seconds
+2025-01-13 22:42:52,103 - openai._base_client - INFO - Retrying request to /chat/completions in 0.979670 seconds
+2025-01-13 22:42:55,125 - openai._base_client - INFO - Retrying request to /chat/completions in 1.532035 seconds
+2025-01-13 22:42:58,703 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.0763681073812887 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:43:01,826 - openai._base_client - INFO - Retrying request to /chat/completions in 0.397381 seconds
+2025-01-13 22:43:04,259 - openai._base_client - INFO - Retrying request to /chat/completions in 0.902230 seconds
+2025-01-13 22:43:07,196 - openai._base_client - INFO - Retrying request to /chat/completions in 1.665254 seconds
+2025-01-13 22:43:10,906 - app.core.rag - ERROR - Ошибка при поиске по всем документам: Connection error.
+2025-01-13 22:45:24,669 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:45:27,449 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:45:27,486 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:45:27,712 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:45:27,714 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:45:29,656 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:45:29,661 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:46:25,243 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:46:25,259 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 22:46:25,260 - app.core.rag - INFO - LLM_URL: http://localhost:8085/v1
+2025-01-13 22:46:27,837 - openai._base_client - INFO - Retrying request to /chat/completions in 0.396591 seconds
+2025-01-13 22:46:30,272 - openai._base_client - INFO - Retrying request to /chat/completions in 0.961889 seconds
+2025-01-13 22:46:33,276 - openai._base_client - INFO - Retrying request to /chat/completions in 1.998948 seconds
+2025-01-13 22:46:37,300 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.0 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:46:40,350 - openai._base_client - INFO - Retrying request to /chat/completions in 0.496618 seconds
+2025-01-13 22:46:42,898 - openai._base_client - INFO - Retrying request to /chat/completions in 0.775227 seconds
+2025-01-13 22:46:45,716 - openai._base_client - INFO - Retrying request to /chat/completions in 1.862207 seconds
+2025-01-13 22:46:49,625 - llama_index.llms.openai.utils - WARNING - Retrying llama_index.llms.openai.base.OpenAI._chat in 1.4710456437385022 seconds as it raised APIConnectionError: Connection error..
+2025-01-13 22:46:53,149 - openai._base_client - INFO - Retrying request to /chat/completions in 0.381420 seconds
+2025-01-13 22:46:55,562 - openai._base_client - INFO - Retrying request to /chat/completions in 0.875998 seconds
+2025-01-13 22:46:58,482 - openai._base_client - INFO - Retrying request to /chat/completions in 1.982529 seconds
+2025-01-13 22:47:02,509 - app.core.rag - ERROR - Ошибка при поиске по всем документам: Connection error.
+2025-01-13 22:49:14,458 - app.core.rag - INFO - Инициализация LLM с URL: http://localhost:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:49:14,463 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:49:17,016 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:49:17,043 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:49:17,251 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:49:17,251 - app.core.rag - INFO - Инициализация LLM с URL: http://localhost:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:49:17,253 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:49:19,293 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:49:19,299 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:49:36,594 - app.core.rag - INFO - Инициализация LLM с URL: http://localhost:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:49:36,596 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:49:38,982 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:49:39,012 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:49:39,229 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:49:39,230 - app.core.rag - INFO - Инициализация LLM с URL: http://localhost:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:49:39,232 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:49:41,313 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:49:41,319 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:50:41,359 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-13 22:50:58,278 - app.core.rag - INFO - LLM health check status: 200
+2025-01-13 22:50:58,595 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:50:58,615 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 22:50:58,616 - app.core.rag - INFO - LLM_URL: http://localhost:8085/v1
+2025-01-13 22:50:58,617 - app.core.rag - INFO - Отправка запроса к LLM серверу: http://localhost:8085/v1
+2025-01-13 22:50:58,617 - app.core.rag - INFO - Используемая модель: saiga_nemo_12b_gguf
+2025-01-13 22:50:58,618 - app.core.rag - INFO - Длина промпта: 190 символов
+2025-01-13 22:50:58,618 - app.core.rag - ERROR - Критическая ошибка при работе с LLM: 'RAGManager' object has no attribute 'max_retries'
+2025-01-13 22:55:09,669 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:55:09,672 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:55:12,581 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:55:12,611 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:55:12,874 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:55:12,875 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:55:12,878 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:55:14,751 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:55:14,758 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:55:37,731 - app.core.rag - INFO - LLM health check status: 200
+2025-01-13 22:55:38,024 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:55:38,042 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 22:55:38,043 - app.core.rag - ERROR - Критическая ошибка при работе с LLM: 'LMStudio' object has no attribute 'api_base'
+2025-01-13 22:56:41,970 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:56:41,972 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:56:44,743 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:56:44,780 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:56:45,047 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:56:45,047 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:56:45,050 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:56:47,043 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:56:47,050 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:56:53,247 - app.core.rag - INFO - LLM health check status: 200
+2025-01-13 22:56:53,497 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 22:56:53,519 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 22:56:53,520 - app.core.rag - INFO - Длина промпта: 190 символов
+2025-01-13 22:56:53,520 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-13 22:56:56,537 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-13 22:56:56,541 - app.core.rag - ERROR - Ошибка при попытке 1: object CompletionResponse can't be used in 'await' expression
+2025-01-13 22:56:56,541 - app.core.rag - WARNING - Ожидание 1.0 секунд перед следующей попыткой
+2025-01-13 22:56:57,524 - app.core.rag - INFO - Попытка 2 отправки запроса к LLM
+2025-01-13 22:56:59,993 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-13 22:56:59,994 - app.core.rag - ERROR - Ошибка при попытке 2: object CompletionResponse can't be used in 'await' expression
+2025-01-13 22:56:59,995 - app.core.rag - WARNING - Ожидание 2.0 секунд перед следующей попыткой
+2025-01-13 22:57:01,997 - app.core.rag - INFO - Попытка 3 отправки запроса к LLM
+2025-01-13 22:57:04,117 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-13 22:57:04,118 - app.core.rag - ERROR - Ошибка при попытке 3: object CompletionResponse can't be used in 'await' expression
+2025-01-13 22:57:04,119 - app.core.rag - ERROR - Критическая ошибка при работе с LLM: object CompletionResponse can't be used in 'await' expression
+2025-01-13 22:59:53,148 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:59:53,151 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:59:55,948 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:59:55,981 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 22:59:56,245 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 22:59:56,245 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 22:59:56,248 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 22:59:58,110 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 22:59:58,118 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 23:00:06,332 - app.core.rag - INFO - LLM health check status: 200
+2025-01-13 23:00:06,636 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 23:00:06,656 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            Вопрос: Привет
+            
+2025-01-13 23:00:06,656 - app.core.rag - INFO - Длина промпта: 190 символов
+2025-01-13 23:00:06,657 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-13 23:00:08,869 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-13 23:00:08,870 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-13 23:09:56,004 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 23:09:56,006 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 23:10:08,577 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 23:10:08,610 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 23:10:08,827 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 23:10:08,836 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 23:10:08,840 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 23:10:10,817 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 23:10:10,823 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 23:11:29,323 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-13 23:12:51,728 - app.core.rag - INFO - LLM health check status: 200
+2025-01-13 23:12:52,042 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-13 23:12:52,061 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            История диалога:
+            Пользователь: Привет
+
+            
+            Текущий вопрос пользователя: Привет
+            
+2025-01-13 23:12:52,063 - app.core.rag - INFO - Длина промпта: 287 символов
+2025-01-13 23:12:52,063 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-13 23:12:55,870 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-13 23:12:55,871 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-13 23:17:40,505 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 23:17:40,507 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 23:17:42,862 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 23:17:42,890 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-13 23:17:43,105 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 23:17:43,113 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-13 23:17:43,116 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-13 23:17:45,094 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-13 23:17:45,101 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-13 23:19:41,288 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-14 20:06:57,419 - urllib3.connectionpool - WARNING - Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001285FC10B30>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /documents?location=
+2025-01-14 20:07:01,881 - urllib3.connectionpool - WARNING - Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001285FBEBFE0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /documents?location=
+2025-01-14 20:07:06,776 - urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001285FCE4320>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /documents?location=
+2025-01-14 20:07:12,456 - urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001285FCE4230>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /documents?location=
+2025-01-14 20:07:19,722 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001285FCE40B0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /documents?location=
+2025-01-14 20:12:37,276 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:12:37,280 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:12:40,311 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:12:40,344 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 20:12:40,582 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:12:40,589 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:12:40,591 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:12:42,570 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:12:42,576 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:12:59,407 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-14 20:45:00,759 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:45:00,761 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:45:03,047 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:45:03,068 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 20:45:03,235 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:45:03,241 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:45:03,243 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:45:05,043 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:45:05,049 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:45:16,657 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:45:16,658 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:45:18,884 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:45:18,904 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 20:45:19,065 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:45:19,070 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:45:19,072 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:45:20,891 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:45:20,896 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:46:46,177 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-14 20:48:30,283 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:48:30,285 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:48:32,748 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:48:32,770 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 20:48:32,951 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:48:32,959 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:48:32,962 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:48:34,825 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:48:34,831 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:48:47,075 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:48:47,078 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:48:49,599 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:48:49,620 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 20:48:49,790 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:48:49,795 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 20:48:49,797 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 20:48:51,632 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 20:48:51,643 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 20:56:32,727 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-14 20:56:51,463 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 20:56:51,893 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 20:56:51,922 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            История диалога:
+            Пользователь: Привет
+Ассистент: Привет! Как я могу помочь вам?
+Пользователь: Как дела?
+
+            
+            Текущий вопрос пользователя: Как дела?
+            
+2025-01-14 20:56:51,923 - app.core.rag - INFO - Длина промпта: 356 символов
+2025-01-14 20:56:51,923 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 20:56:57,615 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 20:56:57,618 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 21:12:14,977 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:12:14,979 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:12:18,082 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:12:18,106 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:12:18,305 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:12:18,312 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:12:18,314 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:12:20,266 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:12:20,273 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:12:33,856 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:12:33,857 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:12:36,156 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:12:36,183 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:12:36,371 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:12:36,377 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:12:36,378 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:12:38,350 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:12:38,355 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:14:06,891 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 21:14:07,170 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 21:14:07,186 - app.core.rag - INFO - Prompt: На основе следующего контекста ответьте на вопрос.
+            
+            Контекст:
+            # Я тестовый файлик
+
+**Жирный шрифт**
+            
+            История диалога:
+            Пользователь: Привет
+Ассистент: Привет! Как я могу помочь вам?
+Пользователь: Как дела?
+Ассистент: Ассистент: **Отлично!** Спасибо за интерес. А как твои дела?
+Пользователь: Норм
+
+            
+            Текущий вопрос пользователя: Норм
+            
+2025-01-14 21:14:07,186 - app.core.rag - INFO - Длина промпта: 442 символов
+2025-01-14 21:14:07,188 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 21:14:12,604 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 21:14:12,605 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 21:16:53,534 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:16:53,537 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:16:56,257 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:16:56,325 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:16:56,539 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:16:56,547 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:16:56,549 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:16:58,483 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:16:58,489 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:17:14,516 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:17:14,519 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:17:16,933 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:17:16,956 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:17:17,177 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:17:17,183 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:17:17,184 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:17:19,179 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:17:19,186 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:17:33,306 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:17:33,308 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:17:35,703 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:17:35,726 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:17:35,908 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:17:35,915 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:17:35,918 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:17:37,942 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:17:37,947 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:18:03,207 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 21:18:03,456 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 21:18:03,471 - app.core.rag - INFO - Prompt: 
+На основе следующего контекста ответьте на вопрос.
+            
+Контекст:
+# Я тестовый файлик
+
+**Жирный шрифт**
+
+История диалога:
+Пользователь: Здарррова чел
+
+
+Текущий вопрос пользователя: Здарррова чел
+
+Отвечай как обычный пользователь, не как бот.
+            
+2025-01-14 21:18:03,472 - app.core.rag - INFO - Длина промпта: 265 символов
+2025-01-14 21:18:03,472 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 21:18:07,123 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 21:18:07,124 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 21:18:51,997 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 21:18:52,034 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 21:18:52,037 - app.core.rag - INFO - Prompt: 
+На основе следующего контекста ответьте на вопрос.
+            
+Контекст:
+# Я тестовый файлик
+
+**Жирный шрифт**
+
+История диалога:
+Пользователь: Здарррова чел
+Ассистент: Эй, привет! Как сам? Что за дела?
+Пользователь: Что написано в контексте который тебе передали?
+
+
+Текущий вопрос пользователя: Что написано в контексте который тебе передали?
+
+Отвечай как обычный пользователь, не как бот.
+            
+2025-01-14 21:18:52,037 - app.core.rag - INFO - Длина промпта: 406 символов
+2025-01-14 21:18:52,038 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 21:19:03,899 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 21:19:03,900 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 21:24:52,476 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 21:24:52,516 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 21:24:52,518 - app.core.rag - INFO - Prompt: 
+На основе следующего контекста ответьте на вопрос.
+            
+Контекст:
+# Я тестовый файлик
+
+**Жирный шрифт**
+
+История диалога:
+Пользователь: Здарррова чел
+Ассистент: Эй, привет! Как сам? Что за дела?
+Пользователь: Что написано в контексте который тебе передали?
+Ассистент: Эй, братан! Да вот тут такой текст:
+
+# Я тестовый файлик
+
+И еще там жирненьким шрифтом написано **Жирный шрифт**. Типа, это и есть тот самый "контекст", который передали, хе-хе.
+Пользователь: АБОБА
+
+
+Текущий вопрос пользователя: АБОБА
+
+Отвечай как обычный пользователь, не как бот.
+            
+2025-01-14 21:24:52,519 - app.core.rag - INFO - Длина промпта: 573 символов
+2025-01-14 21:24:52,519 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 21:24:58,765 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 21:24:58,766 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 21:27:39,858 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:27:39,863 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:27:43,452 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:27:43,484 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:27:43,737 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:27:43,747 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:27:43,751 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:27:45,709 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:27:45,715 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:28:00,177 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:28:00,179 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:28:02,624 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:28:02,648 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:28:02,834 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:28:02,840 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:28:02,842 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:28:05,235 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:28:05,241 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:30:54,964 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:30:54,967 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:30:57,541 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:30:57,562 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:30:57,734 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:30:57,740 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:30:57,742 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:30:59,610 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:30:59,615 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:31:11,499 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:31:11,501 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:31:14,033 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:31:14,051 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:31:14,215 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:31:14,220 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:31:14,222 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:31:16,139 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:31:16,143 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:32:55,394 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-14 21:33:24,857 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 21:33:25,108 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 21:33:25,126 - app.core.rag - INFO - Prompt: 
+На основе следующего контекста ответьте на вопрос.
+            
+Контекст:
+# Я тестовый файлик
+
+**Жирный шрифт**
+
+История диалога:
+Пользователь: Здарррова чел
+Ассистент: Эй, привет! Как сам? Что за дела?
+Пользователь: Что написано в контексте который тебе передали?
+Ассистент: Эй, братан! Да вот тут такой текст:
+
+# Я тестовый файлик
+
+И еще там жирненьким шрифтом написано **Жирный шрифт**. Типа, это и есть тот самый "контекст", который передали, хе-хе.
+Пользователь: АБОБА
+Ассистент: Эй, чего за "абоба"? Всё окей с контекстом разобрали уже! Чем еще могу помочь?
+Пользователь: АААААААА
+
+
+Текущий вопрос пользователя: АААААААА
+
+Отвечай как ассистент технической поддержки, который должен только отвечать на вопросы, которые относятся к документам, которые относятся к контексту.
+            
+2025-01-14 21:33:25,127 - app.core.rag - INFO - Длина промпта: 794 символов
+2025-01-14 21:33:25,128 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 21:33:41,401 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 21:33:41,403 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 21:47:53,829 - app.core.rag - ERROR - Ошибка при удалении коллекции: Collection doc_1 does not exist.
+2025-01-14 21:47:53,832 - app.core.middleware - ERROR - Unexpected error: Ошибка при удалении документа: Collection doc_1 does not exist.
+2025-01-14 21:47:55,866 - app.core.rag - ERROR - Ошибка при удалении коллекции: Collection doc_1 does not exist.
+2025-01-14 21:47:55,867 - app.core.middleware - ERROR - Unexpected error: Ошибка при удалении документа: Collection doc_1 does not exist.
+2025-01-14 21:49:13,790 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:49:13,791 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:49:16,165 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:49:16,187 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:49:16,937 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:49:16,943 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:49:16,946 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:49:18,891 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:49:18,902 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:54:15,889 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:54:15,892 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:54:18,361 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:54:18,385 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:54:18,574 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:54:18,580 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:54:18,583 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:54:20,509 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:54:20,515 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:54:34,686 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:54:34,688 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:54:37,782 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:54:37,805 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 21:54:37,997 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 21:54:38,004 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 21:54:38,007 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 21:54:40,088 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 21:54:40,093 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\storage\chroma_db
+2025-01-14 22:11:23,488 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:11:23,490 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:11:26,033 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:11:26,058 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 22:11:26,793 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:11:26,799 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:11:26,802 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:11:28,764 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:11:28,771 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:11:58,181 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "E:\dev\aihelperbackend\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-01-14 22:12:08,442 - app.core.rag - INFO - Документ успешно добавлен в коллекцию doc_1
+2025-01-14 22:18:17,651 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:18:17,654 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:18:20,072 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:18:20,096 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 22:18:20,291 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:18:20,298 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:18:20,301 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:18:22,189 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:18:22,198 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:18:36,780 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:18:36,783 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:18:39,166 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:18:39,196 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 22:18:39,425 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:18:39,432 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:18:39,435 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:18:41,339 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:18:41,347 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:18:46,823 - app.core.rag - INFO - Коллекция doc_1 успешно удалена
+2025-01-14 22:18:46,824 - app.core.rag - INFO - Коллекции: []
+2025-01-14 22:19:58,448 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:19:58,451 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:20:00,973 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:20:01,002 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 22:20:01,232 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:20:01,240 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:20:01,243 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:20:03,363 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:20:03,370 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:20:18,765 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:20:18,768 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:20:21,140 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:20:21,170 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 22:20:21,394 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:20:21,400 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:20:21,403 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:20:23,371 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:20:23,379 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:20:39,368 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:20:39,371 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:20:41,829 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:20:41,885 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-14 22:20:42,172 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:20:42,179 - app.core.rag - INFO - Инициализация LLM с URL: http://127.0.0.1:8085/v1 и моделью: saiga_nemo_12b_gguf
+2025-01-14 22:20:42,183 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-14 22:20:44,121 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-01-14 22:20:44,129 - app.core.rag - INFO - ChromaDB успешно инициализирован по пути: E:\dev\aihelperbackend\src\storage\chroma_db
+2025-01-14 22:20:56,701 - app.core.rag - INFO - Документ успешно добавлен в коллекцию doc_2
+2025-01-14 22:21:26,361 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 22:21:26,649 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 22:21:26,651 - app.core.rag - INFO - Prompt: 
+На основе следующего контекста ответьте на вопрос.
+            
+Контекст:
+# Я тестовый файлик
+
+**Жирный шрифт**
+
+История диалога:
+Пользователь: Привет, расскажи про свой контекст
+
+
+Текущий вопрос пользователя: Привет, расскажи про свой контекст
+
+Отвечай как ассистент технической поддержки, который должен только отвечать на вопросы, которые относятся к документам, которые относятся к контексту.
+            
+2025-01-14 22:21:26,652 - app.core.rag - INFO - Длина промпта: 412 символов
+2025-01-14 22:21:26,653 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 22:21:38,989 - httpx - INFO - HTTP Request: POST http://127.0.0.1:8085/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-14 22:21:38,990 - app.core.rag - INFO - Успешно получен ответ от LLM
+2025-01-14 22:25:35,767 - app.core.rag - INFO - Документ успешно добавлен в коллекцию doc_3
+2025-01-14 22:26:46,957 - app.core.rag - INFO - LLM health check status: 200
+2025-01-14 22:26:46,993 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 22:26:47,031 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 2 is greater than number of elements in index 1, updating n_results = 1
+2025-01-14 22:26:47,033 - app.core.rag - INFO - Prompt: 
+На основе следующего контекста ответьте на вопрос.
+            
+Контекст:
+# Я тестовый файлик
+
+**Жирный шрифт**
+# Полное руководство по Docker
+
+## Содержание
+1. [Введение в Docker](#введение-в-docker)
+2. [Основные концепции](#основные-концепции)
+3. [Установка Docker](#установка-docker)
+4. [Работа с образами](#работа-с-образами)
+5. [Работа с контейнерами](#работа-с-контейнерами)
+6. [Dockerfile](#dockerfile)
+7. [Docker Compose](#docker-compose)
+8. [Сети в Docker](#сети-в-docker)
+9. [Volumes и управление данными](#volumes-и-управление-данными)
+10. [Docker Registry](#docker-registry)
+11. [Лучшие практики](#лучшие-практики)
+12. [Безопасность](#безопасность)
+13. [Продвинутые темы](#продвинутые-темы)
+
+## Введение в Docker
+
+Docker - это платформа для разработки, доставки и запуска приложений в контейнерах. Контейнеризация позволяет упаковать приложение со всеми его зависимостями в стандартизированный модуль для разработки и развертывания.
+
+### Преимущества Docker
+- Изоляция приложений
+- Портативность
+- Масштабируемость
+- Эффективное использование ресурсов
+- Быстрое развертывание
+- Упрощение процессов CI/CD
+
+## Основные концепции
+
+### Контейнер
+Контейнер - это изолированная среда выполнения, которая содержит все необходимое для запуска приложения: код, runtime, системные инструменты и библиотеки.
+
+### Образ (Image)
+Образ - это шаблон, содержащий инструкции для создания контейнера. Образы являются неизменяемыми.
+
+### Docker Engine
+Основной компонент Docker, который управляет контейнерами, образами, сетями и томами.
+
+## Установка Docker
+
+### Linux (Ubuntu)
+```bash
+# Обновление системы
+sudo apt-get update
+
+# Установка необходимых пакетов
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+# Добавление официального GPG-ключа Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# Добавление репозитория Docker
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# Установка Docker
+sudo apt-get update
+sudo apt-get install docker-ce
+```
+
+### Windows
+1. Скачать Docker Desktop с официального сайта
+2. Установить Docker Desktop
+3. Включить WSL 2 (Windows Subsystem for Linux)
+4. Перезагрузить систему
+
+### macOS
+1. Скачать Docker Desktop для Mac
+2. Установить приложение
+3. Запустить Docker Desktop
+
+## Работа с образами
+
+### Основные команды для работы с образами
+
+```bash
+# Поиск образа
+docker search nginx
+
+# Загрузка образа
+docker pull nginx
+
+# Просмотр локальных образов
+docker images
+
+# Удаление образа
+docker rmi nginx
+
+# Построение образа из Dockerfile
+docker build -t myapp:1.0 .
+
+# Сохранение образа в файл
+docker save -o myapp.tar myapp:1.0
+
+# Загрузка образа из файла
+docker load -i myapp.tar
+```
+
+## Работа с контейнерами
+
+### Основные команды управления контейнерами
+
+```bash
+# Запуск контейнера
+docker run nginx
+
+# Запуск контейнера в фоновом режиме
+docker run -d nginx
+
+# Запуск с пробросом портов
+docker run -d -p 8080:80 nginx
+
+# Список запущенных контейнеров
+docker ps
+
+# Список всех контейнеров
+docker ps -a
+
+# Остановка контейнера
+docker stop container_id
+
+# Удаление контейнера
+docker rm container_id
+
+# Просмотр логов контейнера
+docker logs container_id
+
+# Выполнение команды внутри контейнера
+docker exec -it container_id bash
+```
+
+## Dockerfile
+
+Dockerfile - это текстовый файл с инструкциями для создания Docker-образа.
+
+### Основные инструкции
+
+```dockerfile
+# Базовый образ
+FROM ubuntu:20.04
+
+# Установка переменных окружения
+ENV APP_HOME=/app
+
+# Рабочая директория
+WORKDIR $APP_HOME
+
+# Копирование файлов
+COPY . .
+
+# Выполнение команд
+RUN apt-get update && \
+    apt-get install -y python3
+
+# Открытие портов
+EXPOSE 8080
+
+# Команда запуска
+CMD ["python3", "app.py"]
+```
+
+### Лучшие практики написания Dockerfile
+- Использование многоэтапной сборки
+- Минимизация слоев
+- Использование .dockerignore
+- Установка только необходимых пакетов
+- Удаление кеша пакетного менеджера
+
+## Docker Compose
+
+Docker Compose позволяет определять и запускать многоконтейнерные приложения.
+
+### Пример docker-compose.yml
+
+```yaml
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/myapp
+      
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+### Основные команды Docker Compose
+
+```bash
+# Запуск служб
+docker-compose up
+
+# Запуск в фоновом режиме
+docker-compose up -d
+
+# Остановка служб
+docker-compose down
+
+# Просмотр логов
+docker-compose logs
+
+# Пересборка и запуск
+docker-compose up --build
+```
+
+## Сети в Docker
+
+### Типы сетей
+- bridge: сеть по умолчанию
+- host: использование сети хоста
+- none: без сети
+- overlay: для связи между контейнерами на разных хостах
+- macvlan: для прямого подключения к физической сети
+
+### Команды для работы с сетями
+
+```bash
+# Создание сети
+docker network create mynetwork
+
+# Список сетей
+docker network ls
+
+# Подключение контейнера к сети
+docker network connect mynetwork container_id
+
+# Отключение контейнера от сети
+docker network disconnect mynetwork container_id
+```
+
+## Volumes и управление данными
+
+### Типы хранения данных
+1. Volumes
+2. Bind mounts
+3. tmpfs mounts
+
+### Команды для работы с volumes
+
+```bash
+# Создание volume
+docker volume create myvolume
+
+# Список volumes
+docker volume ls
+
+# Проверка информации о volume
+docker volume inspect myvolume
+
+# Удаление volume
+docker volume rm myvolume
+
+# Удаление неиспользуемых volumes
+docker volume prune
+```
+
+## Docker Registry
+
+### Работа с Docker Hub
+
+```bash
+# Авторизация
+docker login
+
+# Пуш образа
+docker push username/image:tag
+
+# Пулл образа
+docker pull username/image:tag
+
+# Выход
+docker logout
+```
+
+### Приватный registry
+- Настройка собственного registry
+- Безопасность и аутентификация
+- Управление доступом
+
+## Лучшие практики
+
+### Оптимизация образов
+- Использование официальных базовых образов
+- Минимизация количества слоев
+- Очистка ненужных файлов
+- Использование .dockerignore
+
+### Управление ресурсами
+- Ограничение памяти и CPU
+- Мониторинг контейнеров
+- Логирование
+
+## Безопасность
+
+### Основные аспекты безопасности
+- Регулярное обновление образов
+- Сканирование уязвимостей
+- Ограничение привилегий
+- Изоляция сетей
+- Защита Docker daemon
+
+### Инструменты безопасности
+- Docker Bench Security
+- Clair
+- Trivy
+- Aqua Security
+
+## Продвинутые темы
+
+### Оркестрация контейнеров
+- Kubernetes
+- Docker Swarm
+- Nomad
+
+### Мониторинг
+- Prometheus
+- Grafana
+- cAdvisor
+
+### CI/CD
+- Jenkins
+- GitLab CI
+- GitHub Actions
+
+### Отладка
+- docker logs
+- docker exec
+- docker inspect
+- docker stats
+
+### Оптимизация производительности
+- Профилирование контейнеров
+- Оптимизация сетевого взаимодействия
+- Настройка хранилища
+
+## Заключение
+
+Docker - мощный инструмент, который значительно упрощает разработку, тестирование и развертывание приложений. Правильное использование Docker требует понимания основных концепций и следования лучшим практикам. Регулярное изучение новых возможностей и обновлений поможет максимально эффективно использовать эту технологию.
+
+История диалога:
+Пользователь: Привет расскажи про типы сетей в docker
+
+
+Текущий вопрос пользователя: Привет расскажи про типы сетей в docker
+
+Отвечай как ассистент технической поддержки, который должен только отвечать на вопросы, которые относятся к документам, которые относятся к контексту.
+            
+2025-01-14 22:26:47,039 - app.core.rag - INFO - Длина промпта: 7477 символов
+2025-01-14 22:26:47,040 - app.core.rag - INFO - Попытка 1 отправки запроса к LLM
+2025-01-14 22:27:17,377 - app.core.rag - ERROR - Ошибка при попытке 1: timed out
+2025-01-14 22:27:17,378 - app.core.rag - WARNING - Ожидание 1.0 секунд перед следующей попыткой
+2025-01-14 22:27:18,381 - app.core.rag - INFO - Попытка 2 отправки запроса к LLM
+2025-01-14 22:27:48,760 - app.core.rag - ERROR - Ошибка при попытке 2: timed out
+2025-01-14 22:27:48,760 - app.core.rag - WARNING - Ожидание 2.0 секунд перед следующей попыткой
+2025-01-14 22:27:50,766 - app.core.rag - INFO - Попытка 3 отправки запроса к LLM
+2025-01-14 22:28:21,179 - app.core.rag - ERROR - Ошибка при попытке 3: timed out
+2025-01-14 22:28:21,179 - app.core.rag - ERROR - Критическая ошибка при работе с LLM: timed out
