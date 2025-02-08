@@ -23,9 +23,17 @@ class Settings(BaseSettings):
     MINIO_SECURE: bool = False
     MINIO_BUCKET_NAME: str = "documents"
 
-    # LLM settings
-    LLM_API_URL: str
-    LLM_MODEL_NAME: str = "mistral-7b-instruct"
+    # OpenAI и Embedding settings
+    API_BASE: str
+    MODEL_NAME: str
+    API_KEY: str
+    TEMPERATURE: float = 0.7
+    MAX_TOKENS: int = 2048
+    STREAM_TOKENS: bool = True
+
+    # Vector DB settings
+    CHROMA_HOST: str = "localhost"  # Значение по умолчанию
+    CHROMA_PORT: int = 8000  # Значение по умолчанию
 
     class Config:
         env_file = ".env"

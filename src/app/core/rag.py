@@ -1,16 +1,18 @@
-from typing import Optional, List, Dict
-from llama_index.core import Document, VectorStoreIndex
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.llms.lmstudio import LMStudio
-from llama_index.core import Settings
-import os
-from pathlib import Path
-import shutil
-import logging
-from llama_index.vector_stores.chroma import ChromaVectorStore
-import chromadb
-import aiohttp
 import asyncio
+import logging
+import math
+from typing import List, Optional
+
+import aiohttp
+import chromadb
+from llama_index.core import Settings
+from llama_index.core.callbacks import CallbackManager, TokenCountingHandler
+from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.llms.openai_like import OpenAILike
+from llama_index.core.llms import ChatMessage
+import openai
+
+from app.core.config import settings
 
 # Настройка логгера
 logging.basicConfig(
@@ -21,46 +23,87 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+# Глобальный экземпляр LLM
+_llm_instance = None
+
+
+def get_llm():
+    """Синглтон для получения экземпляра LLM"""
+
+    global _llm_instance
+    if _llm_instance is None:
+        logger.info("=== Инициализация LLM модели ===")
+        _llm_instance = OpenAILike(
+            api_key=settings.API_KEY,
+            api_base=settings.API_BASE,
+            model=settings.MODEL_NAME,
+            temperature=settings.TEMPERATURE,
+            max_tokens=settings.MAX_TOKENS,
+        )
+        logger.info(f"LLM модель успешно загружена: {settings.MODEL_NAME}")
+    return _llm_instance
+
 
 class RAGManager:
-    def __init__(self, model_url: str, model_name: str):
-        self.model_url = model_url
-        self.model_name = model_name
+    def __init__(self, load_llm: bool = True, load_embeddings: bool = True):
+        logger.info("=== Инициализация RAGManager ===")
+
+        if load_llm:
+            # Получаем предзагруженную модель
+            self.llm = get_llm()
+            # Устанавливаем таймауты и повторные попытки
+            self.llm.timeout = 60.0  # увеличиваем таймаут до 60 секунд
+            self.llm.max_retries = 3
+            logger.info("LLM модель получена из кэша")
+        else:
+            self.llm = None
+            logger.info("Загрузка LLM пропущена")
+
         self.max_retries = 3
         self.base_delay = 1.0
 
-        # Проверяем доступность LLM сервера при инициализации
-        logger.info(f"Инициализация LLM с URL: {model_url} и моделью: {model_name}")
+        if load_embeddings:
+            # Инициализация OpenAI-совместимой модели эмбеддингов
+            self.embed_model = OpenAIEmbedding(
+                api_key=settings.API_KEY,
+                api_base=settings.API_BASE,
+                model_name=settings.MODEL_NAME,
+            )
+            logger.info(f"Embedding модель инициализирована: {settings.MODEL_NAME}")
 
-        self.llm = LMStudio(
-            model_name=model_name,
-            base_url=model_url,
-            temperature=0.7,
-        )
+            # Создаем настройки по умолчанию
+            Settings.llm = self.llm
+            Settings.embed_model = self.embed_model
+            Settings.chunk_size = 512
+            Settings.callback_manager = CallbackManager([TokenCountingHandler()])
+            logger.info("Настройки LlamaIndex установлены")
+        else:
+            self.embed_model = None
+            logger.info("Загрузка Embeddings пропущена")
 
-        self.embed_model = HuggingFaceEmbedding(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
-        )
-
-        Settings.llm = self.llm
-        Settings.embed_model = self.embed_model
-
-        # Инициализация ChromaDB
-        self.db_path = Path(__file__).parent.parent.parent / "storage" / "chroma_db"
-        self.db_path.mkdir(parents=True, exist_ok=True)
-
+        # Инициализация ChromaDB как клиента
         try:
-            self.chroma_client = chromadb.PersistentClient(path=str(self.db_path))
-            logger.info(f"ChromaDB успешно инициализирован по пути: {self.db_path}")
+            self.chroma_client = chromadb.HttpClient(
+                host=settings.CHROMA_HOST, port=settings.CHROMA_PORT
+            )
+            # Создаем единую коллекцию для всех документов
+            self.collection = self.chroma_client.get_or_create_collection("documents")
+            logger.info(
+                f"ChromaDB успешно инициализирован по адресу: http://{settings.CHROMA_HOST}:{settings.CHROMA_PORT}"
+            )
         except Exception as e:
             logger.error(f"Ошибка при инициализации ChromaDB: {e}")
             raise
+
+        self.current_context = None  # Добавляем хранение текущего контекста
+
+        logger.info("=== RAGManager успешно инициализирован ===")
 
     async def check_llm_availability(self) -> bool:
         """Проверка доступности LLM сервера"""
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(f"{self.model_url}/models") as response:
+                async with session.get(f"{settings.API_BASE}/v1/models") as response:
                     logger.info(f"LLM health check status: {response.status}")
                     return response.status == 200
         except Exception as e:
@@ -71,32 +114,92 @@ class RAGManager:
         if document_id is None:
             raise ValueError("document_id не может быть None")
 
-        collection_name = f"doc_{document_id}"
         try:
-            collection = self.chroma_client.get_or_create_collection(collection_name)
-            # Добавляем документ в коллекцию
-            collection.add(
-                documents=[content],
-                ids=[f"doc_{document_id}_0"],
-                metadatas=[{"document_id": document_id}],
-            )
-            logger.info(f"Документ успешно добавлен в коллекцию {collection_name}")
+            # Параметры разделения
+            chunk_size = 2000
+            chunk_overlap = 200
+            batch_size = 10  # количество чанков в одной партии
+            
+            # Генератор чанков для потоковой обработки
+            def chunk_generator():
+                start = 0
+                text_length = len(content)
+                
+                while start < text_length:
+                    end = min(start + chunk_size, text_length)
+                    
+                    # Ищем ближайший пробел или перенос строки, только если мы не в конце текста
+                    if end < text_length:
+                        while end > start and not content[end].isspace():
+                            end -= 1
+                        if end == start:  # Если не нашли пробел, используем исходную границу
+                            end = min(start + chunk_size, text_length)
+                    
+                    # Получаем чанк
+                    chunk = content[start:end].strip()
+                    if chunk:
+                        yield chunk
+                    
+                    # Если достигли конца текста, выходим
+                    if end >= text_length:
+                        break
+                        
+                    # Сдвигаем начало следующего чанка
+                    start = end - chunk_overlap
+
+            # Обработка чанков партиями
+            current_batch = []
+            current_ids = []
+            current_metadatas = []
+            chunk_index = 0
+
+            for chunk in chunk_generator():
+                current_batch.append(chunk)
+                current_ids.append(f"doc_{document_id}_{chunk_index}")
+                current_metadatas.append({"document_id": document_id, "chunk_index": chunk_index})
+                chunk_index += 1
+
+                # Когда набралась партия - отправляем в базу
+                if len(current_batch) >= batch_size:
+                    await asyncio.sleep(0.1)  # Даем время другим задачам
+                    self.collection.add(
+                        documents=current_batch,
+                        ids=current_ids,
+                        metadatas=current_metadatas,
+                    )
+                    logger.info(f"Добавлена партия из {len(current_batch)} блоков")
+                    current_batch = []
+                    current_ids = []
+                    current_metadatas = []
+
+            # Добавляем оставшиеся чанки
+            if current_batch:
+                self.collection.add(
+                    documents=current_batch,
+                    ids=current_ids,
+                    metadatas=current_metadatas,
+                )
+                logger.info(f"Добавлена последняя партия из {len(current_batch)} блоков")
+
+            total_chunks = chunk_index
+            logger.info(f"Документ {document_id} успешно разделен на {total_chunks} блоков")
+
         except Exception as e:
             logger.error(f"Ошибка при добавлении документа в коллекцию: {e}")
             raise
 
     async def update_document(self, document_id: int, new_content: str) -> None:
-        collection_name = f"doc_{document_id}"
         try:
-            collection = self.chroma_client.get_or_create_collection(collection_name)
-            # Генерируем новый ID для документа
-            new_id = f"doc_{document_id}_{len(collection.get()['ids'])}"
-            collection.add(
+            # Получаем все существующие документы с данным document_id
+            existing_docs = self.collection.get(where={"document_id": document_id})
+            new_id = f"doc_{document_id}_{len(existing_docs['ids'])}"
+
+            self.collection.add(
                 documents=[new_content],
                 ids=[new_id],
                 metadatas=[{"document_id": document_id}],
             )
-            logger.info(f"Документ успешно обновлен в коллекции {collection_name}")
+            logger.info(f"Документ {document_id} успешно обновлен")
         except Exception as e:
             logger.error(f"Ошибка при обновлении документа: {e}")
             raise
@@ -104,30 +207,75 @@ class RAGManager:
     async def batch_insert_documents(
         self, document_id: int, documents: List[str]
     ) -> None:
-        collection_name = f"doc_{document_id}"
         try:
-            collection = self.chroma_client.get_or_create_collection(collection_name)
-            current_count = len(collection.get()["ids"])
+            # Получаем текущее количество документов для данного document_id
+            existing_docs = self.collection.get(where={"document_id": document_id})
+            current_count = len(existing_docs["ids"])
 
-            # Подготовка данных для пакетной вставки
-            ids = [
-                f"doc_{document_id}_{i + current_count}" for i in range(len(documents))
-            ]
-            metadatas = [{"document_id": document_id} for _ in documents]
+            all_chunks = []
+            all_ids = []
+            all_metadatas = []
+            all_embeddings = []
 
-            collection.add(documents=documents, ids=ids, metadatas=metadatas)
+            for doc_index, content in enumerate(documents):
+                # Разделяем текст на абзацы
+                paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+                
+                # Если абзац слишком длинный, разбиваем его дополнительно
+                doc_chunks = []
+                for paragraph in paragraphs:
+                    if len(paragraph.split()) > Settings.chunk_size:
+                        words = paragraph.split()
+                        for i in range(0, len(words), Settings.chunk_size):
+                            chunk = " ".join(words[i:i + Settings.chunk_size])
+                            doc_chunks.append(chunk)
+                    else:
+                        doc_chunks.append(paragraph)
+
+                # Генерируем эмбеддинги для фрагментов
+                for chunk in doc_chunks:
+                    embedding = self.embed_model.get_text_embedding(chunk)
+                    all_embeddings.append(embedding)
+
+                # Создаем ID и метаданные для каждого фрагмента
+                base_index = current_count + sum(len(c) for c in all_chunks)
+                chunk_ids = [
+                    f"doc_{document_id}_{base_index + i}"
+                    for i in range(len(doc_chunks))
+                ]
+                chunk_metadatas = [
+                    {
+                        "document_id": document_id,
+                        "chunk_index": base_index + i,
+                        "doc_index": doc_index,
+                    }
+                    for i in range(len(doc_chunks))
+                ]
+
+                all_chunks.extend(doc_chunks)
+                all_ids.extend(chunk_ids)
+                all_metadatas.extend(chunk_metadatas)
+
+            self.collection.add(
+                documents=all_chunks,
+                embeddings=all_embeddings,
+                ids=all_ids,
+                metadatas=all_metadatas
+            )
+            
             logger.info(
-                f"Пакет документов успешно добавлен в коллекцию {collection_name}"
+                f"Пакет документов успешно добавлен для документа {document_id}. "
+                f"Создано {len(all_chunks)} фрагментов с эмбеддингами"
             )
         except Exception as e:
             logger.error(f"Ошибка при пакетном добавлении документов: {e}")
             raise
 
     async def query_document(self, document_id: int, query: str) -> Optional[str]:
-        collection_name = f"doc_{document_id}"
         try:
-            collection = self.chroma_client.get_collection(collection_name)
-            results = collection.query(query_texts=[query], n_results=1)
+            results = self.collection.query(
+                query_texts=[query], where={"document_id": document_id}, n_results=1
+            )
             if results and results["documents"][0]:
                 return results["documents"][0][0]
             return None
@@ -136,93 +284,111 @@ class RAGManager:
             return None
 
     def remove_index(self, document_id: int) -> None:
-        collection_name = f"doc_{document_id}"
         try:
-            self.chroma_client.delete_collection(collection_name)
-            logger.info(f"Коллекция {collection_name} успешно удалена")
-            logger.info(f"Коллекции: {self.chroma_client.list_collections()}")
+            # Получаем все ID документов с указанным document_id
+            docs = self.collection.get(where={"document_id": document_id})
+            if docs["ids"]:
+                self.collection.delete(ids=docs["ids"])
+            logger.info(f"Документы с ID {document_id} успешно удалены")
         except Exception as e:
-            logger.error(f"Ошибка при удалении коллекции: {e}")
+            logger.error(f"Ошибка при удалении документов: {e}")
             raise
 
     def has_index(self, document_id: int) -> bool:
-        collection_name = f"doc_{document_id}"
         try:
-            self.chroma_client.get_collection(collection_name)
-            return True
+            docs = self.collection.get(where={"document_id": document_id})
+            return len(docs["ids"]) > 0
         except Exception:
             return False
 
     async def query_all_documents(
-        self, query: str, chat_history: List[Dict[str, str]] = None
-    ) -> str:
-        """
-        Поиск по всем доступным документам с учетом истории чата
-        """
+        self, query_text: str, chat_history=None, is_new_dialog=True
+    ):
         try:
-            # Проверяем доступность LLM сервера перед запросом
-            if not await self.check_llm_availability():
-                raise Exception("LLM сервер недоступен")
+            logger.info("=== Начало обработки запроса к документам ===")
 
-            # Получаем список имен всех коллекций
-            collection_names = self.chroma_client.list_collections()
+            if not query_text.strip():
+                yield "Пожалуйста, введите ваш вопрос."
+                return
 
-            all_results = []
-            # Ищем по каждой коллекции
-            for collection_name in collection_names:
-                collection = self.chroma_client.get_collection(name=collection_name)
-                results = collection.query(
-                    query_texts=[query],
-                    n_results=2,
+            if is_new_dialog or self.current_context is None:
+                results = self.collection.query(
+                    query_texts=[query_text],
+                    n_results=10,
+                    include=["documents", "distances"],
                 )
-                if results["documents"][0]:
-                    all_results.extend(results["documents"][0])
 
-            if not all_results:
-                return "Не найдено релевантной информации в документах."
+                if not results or not results["documents"] or not results["documents"][0]:
+                    logger.warning("Поиск не вернул результатов")
+                    yield "К сожалению, не удалось найти релевантную информацию. Пожалуйста, попробуйте переформулировать вопрос."
+                    return
 
-            # Формируем контекст из найденных отрывков
-            context = "\n".join(all_results)
+                documents_with_scores = [
+                    (doc, 1 / (1 + math.exp(dist - 1)))
+                    for doc, dist in zip(results["documents"][0], results["distances"][0])
+                ]
 
-            # Формируем историю диалога
-            conversation = ""
+                threshold = 0
+                filtered_results = [
+                    doc for doc, score in documents_with_scores if score > threshold
+                ]
+                top_3_results = filtered_results[:3]
+
+                if not top_3_results:
+                    logger.warning("Не найдено релевантных документов выше порога")
+                    yield "Извините, я не нашел достаточно релевантной информации для ответа на ваш вопрос. Пожалуйста, переформулируйте вопрос или уточните детали."
+                    return
+
+                self.current_context = "\n".join(top_3_results)
+                logger.info(f"Сформирован новый контекст из {len(top_3_results)} наиболее релевантных фрагментов")
+
+            # Формируем базовые сообщения
+            messages = [
+                ChatMessage(
+                    role="system", 
+                    content="Ты технический ассистент. Кратко отвечай на вопросы, используя предоставленный контекст."
+                )
+            ]
+
+            # Добавляем историю сообщений, если она есть
             if chat_history:
-                for msg in chat_history:
-                    role = "Пользователь" if msg["role"] == "user" else "Ассистент"
-                    conversation += f"{role}: {msg['content']}\n"
+                messages.extend([ChatMessage(role=m["role"], content=m["content"]) for m in chat_history])
 
-            # Формируем промпт с контекстом и историей
-            prompt = f"""
-На основе следующего контекста ответьте на вопрос.
-            
-Контекст:
-{context}
+            # Добавляем текущий контекст и вопрос
+            messages.append(
+                ChatMessage(
+                    role="user",
+                    content=f"Контекст:\n{self.current_context}\n\nВопрос: {query_text}"
+                )
+            )
 
-История диалога:
-{conversation if chat_history else "История диалога отсутствует"}
+            logger.info(f"Подготовлены сообщения для запроса к OpenAI. Количество сообщений: {len(messages)}")
 
-Текущий вопрос пользователя: {query}
+            try:
+                response = await self.llm.achat(
+                    messages=messages,
+                    timeout=120,  # явно указываем таймаут
+                    stream=True
+                )
 
-Отвечай как ассистент технической поддержки, который должен только отвечать на вопросы, которые относятся к документам, которые относятся к контексту.
-            """
+                if not response or not hasattr(response, 'choices'):
+                    logger.error("Получен некорректный ответ от LLM")
+                    yield "Произошла ошибка при генерации ответа. Пожалуйста, попробуйте позже."
+                    return
 
-            logger.info(f"Prompt: {prompt}")
-            logger.info(f"Длина промпта: {len(prompt)} символов")
+                async for chunk in response:
+                    if chunk and hasattr(chunk, 'choices') and chunk.choices and \
+                       chunk.choices[0].delta and chunk.choices[0].delta.content:
+                        yield chunk.choices[0].delta.content
+                    await asyncio.sleep(0.05)
 
-            for attempt in range(self.max_retries):
-                try:
-                    logger.info(f"Попытка {attempt + 1} отправки запроса к LLM")
-                    response = self.llm.complete(prompt)
-                    logger.info("Успешно получен ответ от LLM")
-                    return response.text
-                except Exception as e:
-                    logger.error(f"Ошибка при попытке {attempt + 1}: {str(e)}")
-                    if attempt == self.max_retries - 1:
-                        raise
-                    delay = self.base_delay * (2**attempt)
-                    logger.warning(f"Ожидание {delay} секунд перед следующей попыткой")
-                    await asyncio.sleep(delay)
+            except openai.APITimeoutError as e:
+                logger.error(f"Таймаут при запросе к LLM API: {e}", exc_info=True)
+                yield "Извините, сервер не отвечает. Пожалуйста, попробуйте позже."
+            except Exception as e:
+                logger.error(f"Ошибка при генерации ответа: {e}", exc_info=True)
+                yield "Произошла ошибка при генерации ответа. Пожалуйста, попробуйте позже."
 
         except Exception as e:
-            logger.error(f"Критическая ошибка при работе с LLM: {str(e)}")
-            raise
+            logger.error(f"=== Ошибка при запросе к базе документов: {e} ===", exc_info=True)
+            yield "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте позже."

@@ -1,22 +1,20 @@
 import json
-
-from fastapi import APIRouter, Depends, WebSocket, HTTPException, status
-from sqlalchemy.orm import Session
+import logging
 from typing import List
 
-from app.core.config import settings
+from fastapi import APIRouter, Depends, HTTPException, WebSocket, status
+from sqlalchemy.orm import Session
+
 from app.core.database import get_db
 from app.core.dependencies import get_current_user, get_current_user_ws
 from app.core.rag import RAGManager
-from app.crud import crud_document, crud_chat
-from app.schemas.chat import Chat, ChatCreate, ChatMessage, ChatBrief
+from app.crud import crud_chat
+from app.schemas.chat import Chat, ChatBrief, ChatCreate, ChatMessage
 
 router = APIRouter()
 
 # Инициализируем RAG менеджер
-rag_manager = RAGManager(
-    model_url=settings.LLM_API_URL, model_name=settings.LLM_MODEL_NAME
-)
+rag_manager = RAGManager()
 
 
 @router.post("/", response_model=Chat)
@@ -39,35 +37,54 @@ async def get_chats(
 async def chat_endpoint(
     websocket: WebSocket, chat_id: int, db: Session = Depends(get_db)
 ):
+    logger = logging.getLogger(__name__)
+    logger.info(f"Новое WebSocket подключение для чата {chat_id}")
+
     await websocket.accept()
+    logger.info(f"WebSocket соединение принято для чата {chat_id}")
 
     try:
         # Аутентификация пользователя
         user = await get_current_user_ws(websocket, db)
         if not user:
+            logger.warning(f"Неавторизованная попытка доступа к чату {chat_id}")
             await websocket.close(code=1008, reason="Unauthorized")
             return
+        logger.info(f"Пользователь {user.email} авторизован для чата {chat_id}")
 
         # Проверяем существование чата и права доступа
         chat = crud_chat.get_chat(db, chat_id)
         if not chat or chat.user_id != user.id:
+            logger.warning(
+                f"Попытка доступа к несуществующему чату или отказ в доступе: {chat_id}"
+            )
             await websocket.close(code=1008, reason="Chat not found or access denied")
             return
+        logger.info(
+            f"Доступ к чату {chat_id} подтвержден для пользователя {user.email}"
+        )
 
         while True:
             message = await websocket.receive_text()
+            logger.info(
+                f"Получено сообщение в чате {chat_id} от пользователя {user.email}"
+            )
 
             try:
-                # Получаем последние сообщения чата (например, последние 10)
+                # Получаем последние сообщения чата
                 chat_history = crud_chat.get_chat_messages(db, chat_id, limit=10)
+                logger.debug(
+                    f"Получена история чата {chat_id}, {len(chat_history)} сообщений"
+                )
 
                 # Форматируем историю чата для промпта
                 formatted_history = []
-                for msg in reversed(
-                    chat_history
-                ):  # Разворачиваем, чтобы получить хронологический порядок
+                for msg in reversed(chat_history):
                     role = "user" if msg.is_user else "assistant"
                     formatted_history.append({"role": role, "content": msg.content})
+                logger.debug(
+                    f"История чата отформатирована, {len(formatted_history)} сообщений"
+                )
 
                 # Добавляем текущее сообщение
                 formatted_history.append({"role": "user", "content": message})
@@ -76,42 +93,77 @@ async def chat_endpoint(
                 user_message = crud_chat.add_message(
                     db=db, chat_id=chat_id, content=message, is_user=True
                 )
+                logger.info(f"Сообщение пользователя сохранено с ID {user_message.id}")
 
-                # Получаем ответ от RAG, передавая историю
-                response = await rag_manager.query_all_documents(
-                    message, chat_history=formatted_history
+                # Сохраняем начальное системное сообщение
+                system_message = crud_chat.add_message(
+                    db=db, chat_id=chat_id, content="", is_user=False
+                )
+                logger.info(
+                    f"Создано пустое системное сообщение с ID: {system_message.id}"
                 )
 
-                if response:
-                    # Сохраняем ответ системы
-                    system_message = crud_chat.add_message(
-                        db=db, chat_id=chat_id, content=response, is_user=False
+                # Получаем потоковый ответ от RAG
+                logger.info("=== Начало получения ответа от RAG ===")
+                response_stream = rag_manager.query_all_documents(
+                    message, chat_history=formatted_history
+                )
+                logger.info(f"Тип response_stream: {type(response_stream)}")
+
+                full_response = ""
+                chunk_counter = 0
+
+                logger.info("=== Начало обработки потока ответов ===")
+                async for complete_response in response_stream:
+                    chunk_counter += 1
+                    logger.info(f"=== Обработка ответа {chunk_counter} ===")
+
+                    # Отправляем текущее состояние ответа клиенту
+                    message_data = json.dumps(
+                        {
+                            "type": "stream",
+                            "content": complete_response,
+                            "messageId": system_message.id,
+                        }
                     )
+
+                    await websocket.send_text(message_data)
+                    full_response = complete_response
+
+                logger.info(
+                    f"=== Генерация завершена, всего обновлений: {chunk_counter} ==="
+                )
+
+                if full_response:
+                    logger.info("=== Обновление финального ответа ===")
+                    # Обновляем существующее сообщение вместо создания нового
+                    system_message = crud_chat.update_message(
+                        db=db, message_id=system_message.id, content=full_response
+                    )
+                    logger.info(f"Ответ обновлен в БД с ID: {system_message.id}")
+
+                    logger.info("Отправка финального WebSocket сообщения...")
                     await websocket.send_text(
                         json.dumps(
                             {
                                 "type": "response",
-                                "content": response,
+                                "content": full_response,
                                 "messageId": system_message.id,
                             }
                         )
                     )
-                else:
-                    await websocket.send_text(
-                        json.dumps(
-                            {
-                                "type": "error",
-                                "content": "Не найдено релевантной информации в документах",
-                            }
-                        )
-                    )
+                    logger.info("Финальное сообщение отправлено")
 
             except Exception as e:
+                logger.error(f"Ошибка при обработке сообщения: {str(e)}", exc_info=True)
                 await websocket.send_text(
                     json.dumps({"type": "error", "content": str(e)})
                 )
 
     except Exception as e:
+        logger.error(
+            f"Критическая ошибка в WebSocket соединении: {str(e)}", exc_info=True
+        )
         await websocket.close(code=1011, reason=str(e))
 
 

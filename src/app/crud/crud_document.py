@@ -1,18 +1,16 @@
-import os
-from typing import List, Optional
-import tempfile
-
 import logging
+import os
+import tempfile
+from typing import List, Optional
+
 from fastapi import UploadFile
 from llama_index.core import SimpleDirectoryReader
 from sqlalchemy.orm import Session
 
-from app.core.config import settings
 from app.core.rag import RAGManager
 from app.core.storage import MinioStorage
 from app.models.document import Document
 from app.schemas.document import (
-    DocumentCreate,
     UploadError,
     UploadResult,
     UploadSuccess,
@@ -23,9 +21,7 @@ storage = MinioStorage()
 logger = logging.getLogger(__name__)
 
 # Инициализируем RAG менеджер
-rag_manager = RAGManager(
-    model_url=settings.LLM_API_URL, model_name=settings.LLM_MODEL_NAME
-)
+rag_manager = RAGManager()
 
 
 def get_document(db: Session, document_id: int) -> Optional[Document]:

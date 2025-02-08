@@ -1,7 +1,8 @@
-from sqlalchemy.orm import Session
 from typing import List, Optional
+
+from sqlalchemy.orm import Session
+
 from app.models.chat import Chat, ChatMessage
-from app.schemas.chat import ChatCreate
 
 
 def create_chat(db: Session, user_id: int, title: str = "Новый чат") -> Chat:
@@ -48,3 +49,12 @@ def rename_chat(db: Session, chat_id: int, new_title: str) -> Chat:
         db.commit()
         db.refresh(chat)
     return chat
+
+
+def update_message(db: Session, message_id: int, content: str):
+    message = db.query(ChatMessage).filter(ChatMessage.id == message_id).first()
+    if message:
+        message.content = content
+        db.commit()
+        db.refresh(message)
+    return message

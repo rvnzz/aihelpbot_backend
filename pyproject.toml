@@ -1,24 +1,28 @@
 [project]
-name = "aihelperbackend"
+name = "aihelpbotbackend"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "alembic>=1.14.0",
+    "alembic>=1.14.1",
     "bcrypt>=4.2.1",
+    "chromadb>=0.6.3",
     "click>=8.1.8",
-    "fastapi>=0.115.6",
+    "docx2txt>=0.8",
+    "fastapi>=0.115.7",
     "httpx>=0.28.1",
-    "llama-index-embeddings-huggingface>=0.5.0",
-    "llama-index>=0.12.10",
+    "llama-index>=0.12.13",
+    "llama-index-embeddings-huggingface>=0.5.1",
+    "llama-index-embeddings-openai>=0.3.1",
     "llama-index-llms-openai-like>=0.3.3",
-    "llama-index-readers-file>=0.4.3",
-    "minio>=7.2.14",
+    "llama-index-readers-file>=0.4.4",
+    "llama-index-vector-stores-chroma>=0.4.1",
+    "minio>=7.2.15",
     "passlib>=1.7.4",
     "psycopg2-binary>=2.9.10",
     "pydantic-settings>=2.7.1",
-    "pydantic[email]>=2.10.5",
+    "pydantic[email]>=2.10.6",
     "pytest>=8.3.4",
     "pytest-asyncio>=0.25.2",
     "python-dotenv>=1.0.1",
@@ -26,14 +30,7 @@ dependencies = [
     "python-multipart>=0.0.20",
     "sqlalchemy>=2.0.37",
     "uvicorn>=0.34.0",
-    "chromadb>=0.6.2",
-    "llama-index-vector-stores-chroma>=0.4.1",
-    "llama-index-llms-lmstudio>=0.3.0",
 ]
-
-
-[project.scripts]
-aihelper = "app.cli.manage:cli"
 
 [tool.uv]
 package = true

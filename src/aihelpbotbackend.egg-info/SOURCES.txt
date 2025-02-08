@@ -1,11 +1,10 @@
 README.md
 pyproject.toml
-src/aihelperbackend.egg-info/PKG-INFO
-src/aihelperbackend.egg-info/SOURCES.txt
-src/aihelperbackend.egg-info/dependency_links.txt
-src/aihelperbackend.egg-info/entry_points.txt
-src/aihelperbackend.egg-info/requires.txt
-src/aihelperbackend.egg-info/top_level.txt
+src/aihelpbotbackend.egg-info/PKG-INFO
+src/aihelpbotbackend.egg-info/SOURCES.txt
+src/aihelpbotbackend.egg-info/dependency_links.txt
+src/aihelpbotbackend.egg-info/requires.txt
+src/aihelpbotbackend.egg-info/top_level.txt
 src/app/__init__.py
 src/app/main.py
 src/app/api/__init__.py
@@ -15,6 +14,7 @@ src/app/api/v1/endpoints/__init__.py
 src/app/api/v1/endpoints/auth.py
 src/app/api/v1/endpoints/chat.py
 src/app/api/v1/endpoints/documents.py
+src/app/api/v1/endpoints/health.py
 src/app/api/v1/endpoints/users.py
 src/app/cli/__init__.py
 src/app/cli/manage.py
