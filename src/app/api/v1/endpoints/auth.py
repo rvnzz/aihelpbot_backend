@@ -51,7 +51,7 @@ def register(user_in: UserCreate, db: Session = Depends(get_db)) -> Any:
         )
 
     # Создаем нового пользователя
-    user = crud_user.create_user(db, obj_in=user_in)
+    user = crud_user.create_user(db, user=user_in)
 
     # Создаем токен доступа
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)

@@ -14,7 +14,6 @@ src/app/api/v1/endpoints/__init__.py
 src/app/api/v1/endpoints/auth.py
 src/app/api/v1/endpoints/chat.py
 src/app/api/v1/endpoints/documents.py
-src/app/api/v1/endpoints/health.py
 src/app/api/v1/endpoints/users.py
 src/app/cli/__init__.py
 src/app/cli/manage.py
@@ -22,10 +21,13 @@ src/app/core/__init__.py
 src/app/core/config.py
 src/app/core/database.py
 src/app/core/dependencies.py
+src/app/core/document_store.py
+src/app/core/embeddings.py
 src/app/core/exceptions.py
 src/app/core/hashing.py
 src/app/core/logger.py
 src/app/core/middleware.py
+src/app/core/query_engine.py
 src/app/core/rag.py
 src/app/core/security.py
 src/app/core/storage.py

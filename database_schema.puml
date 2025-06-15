@@ -1,0 +1,50 @@
+@startuml Database Schema
+
+' Стили
+skinparam class {
+    BackgroundColor White
+    ArrowColor #666666
+    BorderColor #666666
+}
+
+' Таблица User
+class User {
+    + id: Integer
+    email: String
+    hashed_password: String
+    role: Enum
+}
+
+' Таблица Document
+class Document {
+    + id: Integer
+    title: String
+    file_path: String
+    file_type: String
+    uploaded_at: DateTime
+    uploaded_by: Integer
+}
+
+' Таблица Chat
+class Chat {
+    + id: Integer
+    title: String
+    created_at: DateTime
+    user_id: Integer
+}
+
+' Таблица ChatMessage
+class ChatMessage {
+    + id: Integer
+    content: String
+    is_user: Boolean
+    created_at: DateTime
+    chat_id: Integer
+}
+
+' Связи
+User "1" -- "*" Document : uploads
+User "1" -- "*" Chat : has
+Chat "1" -- "*" ChatMessage : contains
+
+@enduml 

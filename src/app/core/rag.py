@@ -1,18 +1,22 @@
 import asyncio
 import logging
 import math
-from typing import List, Optional
+from typing import List, Optional, AsyncGenerator
+from dataclasses import dataclass
 
 import aiohttp
-import chromadb
-from llama_index.core import Settings
-from llama_index.core.callbacks import CallbackManager, TokenCountingHandler
-from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.llms.openai_like import OpenAILike
+from llama_index.core import Settings, VectorStoreIndex, Document
+from llama_index.core.embeddings import BaseEmbedding
 from llama_index.core.llms import ChatMessage
-import openai
+from llama_index.core.node_parser import SentenceSplitter
+from llama_index.core.schema import TextNode
+from llama_index.llms.openrouter import OpenRouter
+from llama_index.vector_stores.postgres import PGVectorStore
 
 from app.core.config import settings
+from app.core.embeddings import CustomEmbedding
+from app.core.document_store import DocumentStore
+from app.core.query_engine import QueryEngine
 
 # Настройка логгера
 logging.basicConfig(
@@ -33,277 +37,354 @@ def get_llm():
     global _llm_instance
     if _llm_instance is None:
         logger.info("=== Инициализация LLM модели ===")
-        _llm_instance = OpenAILike(
+        _llm_instance = OpenRouter(
             api_key=settings.API_KEY,
-            api_base=settings.API_BASE,
-            model=settings.MODEL_NAME,
-            temperature=settings.TEMPERATURE,
             max_tokens=settings.MAX_TOKENS,
+            context_window=16 * 1024,
+            model=settings.MODEL_NAME,
         )
-        logger.info(f"LLM модель успешно загружена: {settings.MODEL_NAME}")
+    print(f"LLM модель: {_llm_instance}")
+    print(f"LLM модель: {_llm_instance.model}")
+    print(f"LLM модель: {_llm_instance.max_tokens}")
+    print(f"LLM модель: {_llm_instance.context_window}")
+    print(f"LLM модель: {_llm_instance.api_key}")
     return _llm_instance
 
 
+@dataclass
+class RAGConfig:
+    """Конфигурация RAG системы"""
+
+    chunk_size: int = 500
+    chunk_overlap: int = 50
+    similarity_top_k: int = 3
+    embed_dim: int = 1024
+    max_retries: int = 20
+
+
 class RAGManager:
-    def __init__(self, load_llm: bool = True, load_embeddings: bool = True):
-        logger.info("=== Инициализация RAGManager ===")
+    """Менеджер для работы с RAG системой"""
 
-        if load_llm:
-            # Получаем предзагруженную модель
-            self.llm = get_llm()
-            # Устанавливаем таймауты и повторные попытки
-            self.llm.timeout = 60.0  # увеличиваем таймаут до 60 секунд
-            self.llm.max_retries = 3
-            logger.info("LLM модель получена из кэша")
-        else:
-            self.llm = None
-            logger.info("Загрузка LLM пропущена")
+    def __init__(self, config: Optional[RAGConfig] = None):
+        self.config = config or RAGConfig()
+        self._initialize_components()
 
-        self.max_retries = 3
-        self.base_delay = 1.0
+        # Инициализируем text splitter на уровне класса
+        self.text_splitter = SentenceSplitter(
+            chunk_size=self.config.chunk_size, chunk_overlap=self.config.chunk_overlap
+        )
+        Settings.text_splitter = self.text_splitter  # Устанавливаем глобально
 
-        if load_embeddings:
-            # Инициализация OpenAI-совместимой модели эмбеддингов
-            self.embed_model = OpenAIEmbedding(
-                api_key=settings.API_KEY,
-                api_base=settings.API_BASE,
-                model_name=settings.MODEL_NAME,
-            )
-            logger.info(f"Embedding модель инициализирована: {settings.MODEL_NAME}")
+    def _initialize_components(self) -> None:
+        """Инициализация основных компонентов RAG системы"""
+        logger.info("Инициализация RAG системы")
 
-            # Создаем настройки по умолчанию
-            Settings.llm = self.llm
-            Settings.embed_model = self.embed_model
-            Settings.chunk_size = 512
-            Settings.callback_manager = CallbackManager([TokenCountingHandler()])
-            logger.info("Настройки LlamaIndex установлены")
-        else:
-            self.embed_model = None
-            logger.info("Загрузка Embeddings пропущена")
+        # Инициализация LLM
+        self.llm = self._setup_llm()
+        Settings.llm = self.llm  # Устанавливаем LLM глобально
 
-        # Инициализация ChromaDB как клиента
+        # Инициализация embedding модели
+        self.embed_model = CustomEmbedding(settings.EMBEDDING_BASE_URL)
+        Settings.embed_model = self.embed_model
+
+        # Инициализация vector store
+        self.vector_store = self._setup_vector_store()
+
+        # Инициализация индекса и других компонентов
+        self.index = VectorStoreIndex.from_vector_store(
+            self.vector_store,
+            show_progress=True,
+            include_embeddings=True,
+            include_text=True,
+            include_metadata=True,
+            include_keywords=False,
+        )
+        self.document_store = DocumentStore(self.vector_store, self.config)
+        self.query_engine = QueryEngine(
+            self.index,
+            self.llm,
+            similarity_top_k=self.config.similarity_top_k,
+            max_retries=self.config.max_retries,
+            retry_delay=5.0,
+        )
+
+    def _setup_llm(self) -> OpenRouter:
+        """Настройка LLM модели"""
+        logger.info(f"Настройка LLM модели: {settings.MODEL_NAME}")
+        logger.info(
+            f"API Key: {'*' * len(settings.API_KEY) if settings.API_KEY else 'Не установлен'}"
+        )
+
+        if not settings.API_KEY:
+            raise ValueError("API ключ не установлен")
+
+        if not settings.MODEL_NAME:
+            raise ValueError("Имя модели не установлено")
+
+        return OpenRouter(
+            api_key=settings.API_KEY,
+            max_tokens=settings.MAX_TOKENS,
+            model=settings.MODEL_NAME,
+            temperature=settings.TEMPERATURE,
+            base_url="https://openrouter.ai/api/v1",
+            timeout=30,
+        )
+
+    def _setup_vector_store(self) -> PGVectorStore:
+        """Настройка векторного хранилища"""
+        return PGVectorStore.from_params(
+            host=settings.PGVECTOR_SERVER,
+            port=settings.PGVECTOR_PORT,
+            user=settings.PGVECTOR_USER,
+            password=settings.PGVECTOR_PASSWORD,
+            database=settings.PGVECTOR_DB,
+            table_name="documents_new",
+            embed_dim=self.config.embed_dim,
+        )
+
+    async def index_document(self, document_id: int, content: str) -> None:
+        """Индексация документа"""
         try:
-            self.chroma_client = chromadb.HttpClient(
-                host=settings.CHROMA_HOST, port=settings.CHROMA_PORT
-            )
-            # Создаем единую коллекцию для всех документов
-            self.collection = self.chroma_client.get_or_create_collection("documents")
-            logger.info(
-                f"ChromaDB успешно инициализирован по адресу: http://{settings.CHROMA_HOST}:{settings.CHROMA_PORT}"
-            )
+            await self.document_store.index_document(document_id, content)
+            logger.info(f"Документ {document_id} успешно проиндексирован")
         except Exception as e:
-            logger.error(f"Ошибка при инициализации ChromaDB: {e}")
+            logger.error(f"Ошибка при индексации документа: {e}")
             raise
 
-        self.current_context = None  # Добавляем хранение текущего контекста
-
-        logger.info("=== RAGManager успешно инициализирован ===")
-
-    async def check_llm_availability(self) -> bool:
-        """Проверка доступности LLM сервера"""
+    async def update_document(self, document_id: int, new_content: str) -> None:
+        """Обновление документа"""
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"{settings.API_BASE}/v1/models") as response:
-                    logger.info(f"LLM health check status: {response.status}")
-                    return response.status == 200
+            await self.delete_document(document_id)
+            await self.index_document(document_id, new_content)
+            logger.info(f"Документ {document_id} успешно обновлен")
         except Exception as e:
-            logger.error(f"Ошибка при проверке LLM сервера: {e}")
+            logger.error(f"Ошибка при обновлении документа: {e}")
+            raise
+
+    async def delete_document(self, document_id: int) -> None:
+        """Удаление документа"""
+        try:
+            self.vector_store.delete({"filter": {"document_id": document_id}})
+            logger.info(f"Документ {document_id} успешно удален")
+        except Exception as e:
+            logger.error(f"Ошибка при удалении документа: {e}")
+            raise
+
+    async def query_documents(
+        self,
+        query: str,
+        chat_history: Optional[List[dict]] = None,
+        is_new_dialog: bool = True,
+    ) -> AsyncGenerator[str, None]:
+        """Поиск ответа на вопрос по документам"""
+        try:
+            async for chunk in self.query_engine.query(
+                query, chat_history, is_new_dialog
+            ):
+                yield chunk
+        except Exception as e:
+            logger.error(f"Ошибка при поиске ответа: {e}")
+            yield "Произошла ошибка при обработке запроса"
+
+    async def check_system_health(self) -> bool:
+        """Проверка здоровья всей системы"""
+        try:
+            llm_available = await self.query_engine.check_llm_availability()
+            vector_store_available = await self.document_store.check_availability()
+
+            return llm_available and vector_store_available
+        except Exception as e:
+            logger.error(f"Ошибка при проверке здоровья системы: {e}")
             return False
 
     async def create_index_for_document(self, document_id: int, content: str) -> None:
+        """Создание индекса для документа с использованием SentenceSplitter"""
         if document_id is None:
             raise ValueError("document_id не может быть None")
 
         try:
-            # Параметры разделения
-            chunk_size = 2000
-            chunk_overlap = 200
-            batch_size = 10  # количество чанков в одной партии
-            
-            # Генератор чанков для потоковой обработки
-            def chunk_generator():
-                start = 0
-                text_length = len(content)
-                
-                while start < text_length:
-                    end = min(start + chunk_size, text_length)
-                    
-                    # Ищем ближайший пробел или перенос строки, только если мы не в конце текста
-                    if end < text_length:
-                        while end > start and not content[end].isspace():
-                            end -= 1
-                        if end == start:  # Если не нашли пробел, используем исходную границу
-                            end = min(start + chunk_size, text_length)
-                    
-                    # Получаем чанк
-                    chunk = content[start:end].strip()
-                    if chunk:
-                        yield chunk
-                    
-                    # Если достигли конца текста, выходим
-                    if end >= text_length:
-                        break
-                        
-                    # Сдвигаем начало следующего чанка
-                    start = end - chunk_overlap
-
-            # Обработка чанков партиями
-            current_batch = []
-            current_ids = []
-            current_metadatas = []
-            chunk_index = 0
-
-            for chunk in chunk_generator():
-                current_batch.append(chunk)
-                current_ids.append(f"doc_{document_id}_{chunk_index}")
-                current_metadatas.append({"document_id": document_id, "chunk_index": chunk_index})
-                chunk_index += 1
-
-                # Когда набралась партия - отправляем в базу
-                if len(current_batch) >= batch_size:
-                    await asyncio.sleep(0.1)  # Даем время другим задачам
-                    self.collection.add(
-                        documents=current_batch,
-                        ids=current_ids,
-                        metadatas=current_metadatas,
-                    )
-                    logger.info(f"Добавлена партия из {len(current_batch)} блоков")
-                    current_batch = []
-                    current_ids = []
-                    current_metadatas = []
-
-            # Добавляем оставшиеся чанки
-            if current_batch:
-                self.collection.add(
-                    documents=current_batch,
-                    ids=current_ids,
-                    metadatas=current_metadatas,
-                )
-                logger.info(f"Добавлена последняя партия из {len(current_batch)} блоков")
-
-            total_chunks = chunk_index
-            logger.info(f"Документ {document_id} успешно разделен на {total_chunks} блоков")
-
-        except Exception as e:
-            logger.error(f"Ошибка при добавлении документа в коллекцию: {e}")
-            raise
-
-    async def update_document(self, document_id: int, new_content: str) -> None:
-        try:
-            # Получаем все существующие документы с данным document_id
-            existing_docs = self.collection.get(where={"document_id": document_id})
-            new_id = f"doc_{document_id}_{len(existing_docs['ids'])}"
-
-            self.collection.add(
-                documents=[new_content],
-                ids=[new_id],
-                metadatas=[{"document_id": document_id}],
+            # Разбиваем текст на чанки
+            text_splitter = SentenceSplitter(
+                chunk_size=self.config.chunk_size,
+                chunk_overlap=self.config.chunk_overlap,
             )
-            logger.info(f"Документ {document_id} успешно обновлен")
+            text_chunks = text_splitter.split_text(content)
+
+            # Получаем эмбеддинги для всех чанков
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"{settings.EMBEDDING_BASE_URL}/embeddings",
+                    json={"texts": text_chunks},
+                ) as response:
+                    data = await response.json()
+                    embeddings = data["embeddings"]
+
+            # Создаем ноды с эмбеддингами
+            nodes = [
+                TextNode(
+                    text=chunk,
+                    embedding=embedding,
+                    metadata={"document_id": document_id},
+                )
+                for chunk, embedding in zip(text_chunks, embeddings)
+            ]
+
+            # Добавляем ноды в vector_store
+            if nodes:
+                self.vector_store.add(nodes)
+                logger.info(
+                    f"Документ {document_id} успешно разделен на {len(nodes)} фрагментов"
+                )
+
         except Exception as e:
-            logger.error(f"Ошибка при обновлении документа: {e}")
+            logger.error(f"Ошибка при создании индекса документа: {e}")
             raise
 
     async def batch_insert_documents(
         self, document_id: int, documents: List[str]
     ) -> None:
         try:
-            # Получаем текущее количество документов для данного document_id
-            existing_docs = self.collection.get(where={"document_id": document_id})
-            current_count = len(existing_docs["ids"])
+            all_nodes = []
 
-            all_chunks = []
-            all_ids = []
-            all_metadatas = []
-            all_embeddings = []
+            async def get_embeddings_for_chunks(chunks: List[str]) -> List[List[float]]:
+                """Вспомогательная функция для получения эмбеддингов для списка фрагментов."""
+                try:
+                    async with aiohttp.ClientSession() as session:
+                        async with session.post(
+                            f"{settings.EMBEDDING_BASE_URL}/embeddings",
+                            json={"texts": chunks},
+                        ) as response:
+                            if response.status == 200:
+                                data = await response.json()
+                                if (
+                                    "status" in data
+                                    and data["status"] == "success"
+                                    and "embeddings" in data
+                                    and isinstance(data["embeddings"], list)
+                                ):
+                                    return data["embeddings"]
+                                else:
+                                    raise ValueError(
+                                        f"Некорректный ответ от API эмбеддингов: {data}"
+                                    )
+                            else:
+                                response.raise_for_status()
+                except Exception as e:
+                    logger.error(f"Ошибка при получении эмбеддингов: {e}")
+                    raise
 
             for doc_index, content in enumerate(documents):
                 # Разделяем текст на абзацы
-                paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
-                
+                paragraphs = [p.strip() for p in content.split("\n\n") if p.strip()]
+
                 # Если абзац слишком длинный, разбиваем его дополнительно
                 doc_chunks = []
                 for paragraph in paragraphs:
                     if len(paragraph.split()) > Settings.chunk_size:
                         words = paragraph.split()
                         for i in range(0, len(words), Settings.chunk_size):
-                            chunk = " ".join(words[i:i + Settings.chunk_size])
+                            chunk = " ".join(words[i : i + Settings.chunk_size])
                             doc_chunks.append(chunk)
                     else:
                         doc_chunks.append(paragraph)
 
-                # Генерируем эмбеддинги для фрагментов
-                for chunk in doc_chunks:
-                    embedding = self.embed_model.get_text_embedding(chunk)
-                    all_embeddings.append(embedding)
+                # Получаем эмбеддинги для всех фрагментов сразу
+                embeddings = await get_embeddings_for_chunks(doc_chunks)
 
-                # Создаем ID и метаданные для каждого фрагмента
-                base_index = current_count + sum(len(c) for c in all_chunks)
-                chunk_ids = [
-                    f"doc_{document_id}_{base_index + i}"
-                    for i in range(len(doc_chunks))
-                ]
-                chunk_metadatas = [
-                    {
-                        "document_id": document_id,
-                        "chunk_index": base_index + i,
-                        "doc_index": doc_index,
-                    }
-                    for i in range(len(doc_chunks))
-                ]
+                # Создаем узлы для каждого фрагмента
+                for i, chunk in enumerate(doc_chunks):
+                    node = TextNode(
+                        text=chunk,
+                        id_=f"doc_{document_id}_{doc_index}_{i}",
+                        embedding=embeddings[i],
+                        metadata={
+                            "document_id": document_id,
+                            "chunk_index": i,
+                            "doc_index": doc_index,
+                        },
+                    )
+                    all_nodes.append(node)
 
-                all_chunks.extend(doc_chunks)
-                all_ids.extend(chunk_ids)
-                all_metadatas.extend(chunk_metadatas)
+            if all_nodes:  # Проверяем, есть ли фрагменты для добавления
+                self.vector_store.add(all_nodes)
+                logger.info(
+                    f"Пакет документов успешно добавлен в PGVectorStore для документа {document_id}. "
+                    f"Создано {len(all_nodes)} фрагментов"
+                )
 
-            self.collection.add(
-                documents=all_chunks,
-                embeddings=all_embeddings,
-                ids=all_ids,
-                metadatas=all_metadatas
-            )
-            
-            logger.info(
-                f"Пакет документов успешно добавлен для документа {document_id}. "
-                f"Создано {len(all_chunks)} фрагментов с эмбеддингами"
-            )
         except Exception as e:
-            logger.error(f"Ошибка при пакетном добавлении документов: {e}")
+            logger.error(
+                f"Ошибка при пакетном добавлении документов в PGVectorStore: {e}"
+            )
             raise
 
     async def query_document(self, document_id: int, query: str) -> Optional[str]:
+        """Запрос к PGVectorStore с фильтром по document_id."""
         try:
-            results = self.collection.query(
-                query_texts=[query], where={"document_id": document_id}, n_results=1
+            from llama_index.core.vector_stores import VectorStoreQuery
+
+            # Получаем эмбеддинг для запроса
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"{settings.EMBEDDING_BASE_URL}/embeddings",
+                    json={"texts": [query]},
+                ) as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        query_embedding = data["embeddings"][0]
+                    else:
+                        logger.error(
+                            f"Ошибка при получении эмбеддинга для запроса: {response.status}"
+                        )
+                        return None
+
+            # Формируем запрос
+            query_obj = VectorStoreQuery(
+                query_embedding=query_embedding,
+                similarity_top_k=1,
+                filters={"document_id": document_id},  # Исправленный фильтр
             )
-            if results and results["documents"][0]:
-                return results["documents"][0][0]
-            return None
+            query_result = self.vector_store.query(query_obj)
+
+            if query_result.nodes:
+                return query_result.nodes[0].get_content()
+            else:
+                return None
+
         except Exception as e:
-            logger.error(f"Ошибка при выполнении запроса: {e}")
+            logger.error(f"Ошибка при выполнении запроса к PGVectorStore: {e}")
             return None
 
     def remove_index(self, document_id: int) -> None:
+        """Удаление индекса для документа."""
         try:
-            # Получаем все ID документов с указанным document_id
-            docs = self.collection.get(where={"document_id": document_id})
-            if docs["ids"]:
-                self.collection.delete(ids=docs["ids"])
-            logger.info(f"Документы с ID {document_id} успешно удалены")
+            # Используем правильный формат для удаления в PGVectorStore
+            self.vector_store.delete(
+                ref_doc_id=str(document_id), filter={"document_id": document_id}
+            )
+            logger.info(f"Индекс для документа {document_id} успешно удален")
         except Exception as e:
-            logger.error(f"Ошибка при удалении документов: {e}")
+            logger.error(f"Ошибка при удалении индекса документа: {e}")
             raise
 
     def has_index(self, document_id: int) -> bool:
+        """Проверяем, есть ли индекс для данного document_id."""
         try:
-            docs = self.collection.get(where={"document_id": document_id})
-            return len(docs["ids"]) > 0
+            # Пытаемся получить документ.  Если его нет, то и индекса нет.
+            return (
+                self.vector_store.client.query(
+                    "SELECT 1 FROM documents_new WHERE document_id = $1 LIMIT 1",
+                    document_id,
+                ).rowcount
+                > 0
+            )
         except Exception:
             return False
 
     async def query_all_documents(
         self, query_text: str, chat_history=None, is_new_dialog=True
     ):
+        """Поиск ответа на вопрос по документам"""
         try:
             logger.info("=== Начало обработки запроса к документам ===")
 
@@ -311,84 +392,58 @@ class RAGManager:
                 yield "Пожалуйста, введите ваш вопрос."
                 return
 
-            if is_new_dialog or self.current_context is None:
-                results = self.collection.query(
-                    query_texts=[query_text],
-                    n_results=10,
-                    include=["documents", "distances"],
-                )
-
-                if not results or not results["documents"] or not results["documents"][0]:
-                    logger.warning("Поиск не вернул результатов")
-                    yield "К сожалению, не удалось найти релевантную информацию. Пожалуйста, попробуйте переформулировать вопрос."
-                    return
-
-                documents_with_scores = [
-                    (doc, 1 / (1 + math.exp(dist - 1)))
-                    for doc, dist in zip(results["documents"][0], results["distances"][0])
-                ]
-
-                threshold = 0
-                filtered_results = [
-                    doc for doc, score in documents_with_scores if score > threshold
-                ]
-                top_3_results = filtered_results[:3]
-
-                if not top_3_results:
-                    logger.warning("Не найдено релевантных документов выше порога")
-                    yield "Извините, я не нашел достаточно релевантной информации для ответа на ваш вопрос. Пожалуйста, переформулируйте вопрос или уточните детали."
-                    return
-
-                self.current_context = "\n".join(top_3_results)
-                logger.info(f"Сформирован новый контекст из {len(top_3_results)} наиболее релевантных фрагментов")
-
             # Формируем базовые сообщения
             messages = [
                 ChatMessage(
-                    role="system", 
-                    content="Ты технический ассистент. Кратко отвечай на вопросы, используя предоставленный контекст."
+                    role="system",
+                    content="Ты технический ассистент. Кратко отвечай на вопросы, используя предоставленный контекст.",
                 )
             ]
 
             # Добавляем историю сообщений, если она есть
             if chat_history:
-                messages.extend([ChatMessage(role=m["role"], content=m["content"]) for m in chat_history])
-
-            # Добавляем текущий контекст и вопрос
-            messages.append(
-                ChatMessage(
-                    role="user",
-                    content=f"Контекст:\n{self.current_context}\n\nВопрос: {query_text}"
+                messages.extend(
+                    [
+                        ChatMessage(role=m["role"], content=m["content"])
+                        for m in chat_history
+                    ]
                 )
-            )
 
-            logger.info(f"Подготовлены сообщения для запроса к OpenAI. Количество сообщений: {len(messages)}")
+            # Добавляем вопрос
+            messages.append(ChatMessage(role="user", content=query_text))
 
             try:
-                response = await self.llm.achat(
-                    messages=messages,
-                    timeout=120,  # явно указываем таймаут
-                    stream=True
-                )
+                # Формируем строку для запроса
+                prompt = "\n".join([f"{m.role}: {m.content}" for m in messages])
+                logger.info(f"Запрос к LLM API: {prompt}")
 
-                if not response or not hasattr(response, 'choices'):
-                    logger.error("Получен некорректный ответ от LLM")
-                    yield "Произошла ошибка при генерации ответа. Пожалуйста, попробуйте позже."
-                    return
-
-                async for chunk in response:
-                    if chunk and hasattr(chunk, 'choices') and chunk.choices and \
-                       chunk.choices[0].delta and chunk.choices[0].delta.content:
-                        yield chunk.choices[0].delta.content
+                # Используем QueryEngine для получения ответа
+                is_first = True
+                async for chunk in self.query_engine.query(
+                    query_text, chat_history, is_new_dialog
+                ):
+                    if is_first:
+                        yield chunk
+                        is_first = False
+                    else:
+                        yield chunk
                     await asyncio.sleep(0.05)
 
-            except openai.APITimeoutError as e:
+                # Отправляем маркер конца сообщения
+                yield "[END]"
+
+            except asyncio.TimeoutError as e:
                 logger.error(f"Таймаут при запросе к LLM API: {e}", exc_info=True)
                 yield "Извините, сервер не отвечает. Пожалуйста, попробуйте позже."
+                yield "[END]"
             except Exception as e:
                 logger.error(f"Ошибка при генерации ответа: {e}", exc_info=True)
                 yield "Произошла ошибка при генерации ответа. Пожалуйста, попробуйте позже."
+                yield "[END]"
 
         except Exception as e:
-            logger.error(f"=== Ошибка при запросе к базе документов: {e} ===", exc_info=True)
+            logger.error(
+                f"=== Ошибка при запросе к базе документов: {e} ===", exc_info=True
+            )
             yield "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте позже."
+            yield "[END]"

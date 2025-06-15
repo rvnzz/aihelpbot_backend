@@ -1,29 +1,29 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    environment:
-      - POSTGRES_SERVER=db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=doc_management
-      - JWT_SECRET_KEY=your_secret_key
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
-      - MINIO_ENDPOINT=minio:9000
-      - MINIO_SECURE=False
-      - MINIO_BUCKET_NAME=documents
-      - CHROMA_HOST=chroma
-      - CHROMA_PORT=8000
-    depends_on:
-      - db
-      - minio
-      - chroma
+  # web:
+  #   build: .
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - .:/app
+  #   environment:
+  #     - POSTGRES_SERVER=db
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=doc_management
+  #     - JWT_SECRET_KEY=your_secret_key
+  #     - MINIO_ROOT_USER=minioadmin
+  #     - MINIO_ROOT_PASSWORD=minioadmin
+  #     - MINIO_ENDPOINT=minio:9000
+  #     - MINIO_SECURE=False
+  #     - MINIO_BUCKET_NAME=documents
+  #     - CHROMA_HOST=chroma
+  #     - CHROMA_PORT=8000
+  #   depends_on:
+  #     - db
+  #     - minio
+  #     - chroma
 
   db:
     image: postgres:16
@@ -36,6 +36,18 @@ services:
     restart: always
     ports:
       - "5432:5432"
+
+  pgvector:
+    image: pgvector/pgvector:pg15
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=pgvector
+      - POSTGRES_PASSWORD=pgvectorpass
+      - POSTGRES_DB=vectors
+    restart: always
+    ports:
+      - "5433:5432"  # Используем другой порт
 
   minio:
     image: minio/minio
@@ -50,20 +62,23 @@ services:
     command: server --console-address ":9001" /data
     restart: always
 
-  chroma:
-    image: chromadb/chroma
-    volumes:
-      - chroma_data:/chroma/chroma
-    environment:
-      - CHROMA_SERVER_HOST=0.0.0.0
-      - CHROMA_SERVER_PORT=8000
-      - CHROMA_SERVER_CORS_ORIGINS=["*"]
+  embeddings:
+    image:  ravonzz174/aibot-emb:latest
     ports:
-      - "8001:8000"
+      - "8002:8000"
+    volumes:
+      - "./models:/app/models"
+    environment:
+      - MODEL_PATH=/app/models/multilingual-e5-large-instruct-q8_0.gguf
+
+  adminer:
+    image: adminer
     restart: always
+    ports:
+      - 8080:8080
 
 
 volumes:
   postgres_data:
+  pgvector_data:
   minio_data:
-  chroma_data:

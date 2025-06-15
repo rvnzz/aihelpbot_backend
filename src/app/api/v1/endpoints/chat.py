@@ -40,15 +40,18 @@ async def chat_endpoint(
     logger = logging.getLogger(__name__)
     logger.info(f"Новое WebSocket подключение для чата {chat_id}")
 
-    await websocket.accept()
-    logger.info(f"WebSocket соединение принято для чата {chat_id}")
+    connection_active = True
 
     try:
+        await websocket.accept()
+        logger.info(f"WebSocket соединение принято для чата {chat_id}")
+
         # Аутентификация пользователя
         user = await get_current_user_ws(websocket, db)
         if not user:
             logger.warning(f"Неавторизованная попытка доступа к чату {chat_id}")
             await websocket.close(code=1008, reason="Unauthorized")
+            connection_active = False
             return
         logger.info(f"Пользователь {user.email} авторизован для чата {chat_id}")
 
@@ -59,18 +62,19 @@ async def chat_endpoint(
                 f"Попытка доступа к несуществующему чату или отказ в доступе: {chat_id}"
             )
             await websocket.close(code=1008, reason="Chat not found or access denied")
+            connection_active = False
             return
         logger.info(
             f"Доступ к чату {chat_id} подтвержден для пользователя {user.email}"
         )
 
-        while True:
-            message = await websocket.receive_text()
-            logger.info(
-                f"Получено сообщение в чате {chat_id} от пользователя {user.email}"
-            )
-
+        while connection_active:
             try:
+                message = await websocket.receive_text()
+                logger.info(
+                    f"Получено сообщение в чате {chat_id} от пользователя {user.email}"
+                )
+
                 # Получаем последние сообщения чата
                 chat_history = crud_chat.get_chat_messages(db, chat_id, limit=10)
                 logger.debug(
@@ -115,6 +119,9 @@ async def chat_endpoint(
 
                 logger.info("=== Начало обработки потока ответов ===")
                 async for complete_response in response_stream:
+                    if not connection_active:
+                        break
+
                     chunk_counter += 1
                     logger.info(f"=== Обработка ответа {chunk_counter} ===")
 
@@ -128,7 +135,10 @@ async def chat_endpoint(
                     )
 
                     await websocket.send_text(message_data)
-                    full_response = complete_response
+                    full_response += complete_response  # Накапливаем полный ответ
+
+                if not connection_active:
+                    break
 
                 logger.info(
                     f"=== Генерация завершена, всего обновлений: {chunk_counter} ==="
@@ -142,29 +152,47 @@ async def chat_endpoint(
                     )
                     logger.info(f"Ответ обновлен в БД с ID: {system_message.id}")
 
-                    logger.info("Отправка финального WebSocket сообщения...")
-                    await websocket.send_text(
-                        json.dumps(
-                            {
-                                "type": "response",
-                                "content": full_response,
-                                "messageId": system_message.id,
-                            }
+                    if connection_active:
+                        logger.info("Отправка финального WebSocket сообщения...")
+                        await websocket.send_text(
+                            json.dumps(
+                                {
+                                    "type": "response",
+                                    "content": full_response,
+                                    "messageId": system_message.id,
+                                }
+                            )
                         )
-                    )
-                    logger.info("Финальное сообщение отправлено")
+                        logger.info("Финальное сообщение отправлено")
 
+            except WebSocketDisconnect as e:
+                logger.info(
+                    f"WebSocket соединение закрыто клиентом: {e.code} - {e.reason}"
+                )
+                connection_active = False
+                break
             except Exception as e:
                 logger.error(f"Ошибка при обработке сообщения: {str(e)}", exc_info=True)
-                await websocket.send_text(
-                    json.dumps({"type": "error", "content": str(e)})
-                )
+                if connection_active:
+                    try:
+                        await websocket.send_text(
+                            json.dumps({"type": "error", "content": str(e)})
+                        )
+                    except Exception:
+                        connection_active = False
+                        break
 
+    except WebSocketDisconnect as e:
+        logger.info(f"WebSocket соединение закрыто: {e.code} - {e.reason}")
     except Exception as e:
         logger.error(
             f"Критическая ошибка в WebSocket соединении: {str(e)}", exc_info=True
         )
-        await websocket.close(code=1011, reason=str(e))
+        if connection_active:
+            try:
+                await websocket.close(code=1011, reason=str(e))
+            except Exception:
+                pass
 
 
 @router.get("/{chat_id}/history", response_model=List[ChatMessage])
@@ -230,3 +258,30 @@ async def rename_chat(
     # Переименовываем чат
     updated_chat = crud_chat.rename_chat(db, chat_id, title)
     return updated_chat
+
+
+@router.delete("/{chat_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_chat(
+    chat_id: int,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    # Проверяем существование чата
+    chat = crud_chat.get_chat(db, chat_id)
+    if not chat:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Чат не найден"
+        )
+
+    # Проверяем права доступа
+    if chat.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="Нет доступа к этому чату"
+        )
+
+    # Удаляем чат
+    if not crud_chat.delete_chat(db, chat_id):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Ошибка при удалении чата",
+        )

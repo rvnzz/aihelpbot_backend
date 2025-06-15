@@ -58,3 +58,12 @@ def update_message(db: Session, message_id: int, content: str):
         db.commit()
         db.refresh(message)
     return message
+
+
+def delete_chat(db: Session, chat_id: int) -> bool:
+    chat = db.query(Chat).filter(Chat.id == chat_id).first()
+    if chat:
+        db.delete(chat)
+        db.commit()
+        return True
+    return False
