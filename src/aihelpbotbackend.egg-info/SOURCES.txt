@@ -43,5 +43,3 @@ src/app/schemas/__init__.py
 src/app/schemas/chat.py
 src/app/schemas/document.py
 src/app/schemas/user.py
-tests/test_auth.py
-tests/test_documents.py

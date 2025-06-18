@@ -3,6 +3,7 @@ import logging
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, WebSocket, status
+from starlette.websockets import WebSocketDisconnect
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db

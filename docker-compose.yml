@@ -63,7 +63,7 @@ services:
     restart: always
 
   embeddings:
-    image:  ravonzz174/aibot-emb:latest
+    image:  gitverse.ru/ravonzz/aihelp_emb:latest
     ports:
       - "8002:8000"
     volumes:
